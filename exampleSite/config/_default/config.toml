@@ -1,0 +1,182 @@
+#
+# config.toml
+#
+
+################################################################################
+### Base configurations
+################################################################################
+baseURL = "https://gohugo.io"
+title = "Hugo More"
+author = "Shige Fukushima"
+copyright = "Copyright © 2022, Shigeyuki Fukushima and the Docsy Authors; all rights reserved."
+enableRobotsTXT = true
+# Enable Taxonomies to comment out (or delete) the line below
+# disableKinds = ["taxonomy", "taxonomyTerm"]
+
+################################################################################
+### Look & Feel configurations
+################################################################################
+theme = ["hugo-theme-more"]
+paginate = 3
+# Will give values to .Lastmod etc.
+#enableGitInfo = true
+
+# prevent build failures when using Hugo's Instagram shortcode due to deprecated Instagram API.
+# See https://github.com/gohugoio/hugo/issues/7228#issuecomment-714490456
+ignoreErrors = ["error-remote-getjson"]
+
+pygmentsCodeFences = true
+pygmentsUseClasses = false
+pygmentsUseClassic = false
+pygmentsStyle = "tango"
+
+################################################################################
+### Base Language configurations
+################################################################################
+#languageCode = "en-us"
+contentDir = "content/en"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+# Useful when translating.
+enableMissingTranslationPlaceholders = true
+
+### Languages
+[languages]
+    [languages.en]
+        languageName = "English"
+        languageCode = "en"
+        contentDir = "content/en"
+        time_format_blog = "Monday, Jan 2, 2006"
+    [languages.ja]
+        languageName = "日本語 (Japanese)"
+        languageCode = "ja"
+        contentDir = "content/ja"
+        time_format_blog = "2006-01-02"
+
+################################################################################
+### Permalinks configurations
+################################################################################
+[permalinks]
+    blog = "/:section/:year/:month/:day/:slug/"
+
+
+################################################################################
+### Taxonomies configurations
+################################################################################
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+
+
+################################################################################
+### Outputs configurations
+################################################################################
+[outputs]
+  home = ["HTML"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+  #section = ["HTML", "print", "RSS"]
+
+
+################################################################################
+### Imaging configurations
+################################################################################
+[imaging]
+  resampleFilter = "CatmullRom"
+  quality = 75
+  anchor = "smart"
+
+################################################################################
+### Markup configurations
+################################################################################
+
+
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true
+            hardWraps = false
+            xhtml = false
+    [markup.highlight]
+        # See a complete list of available styles at https://xyproto.github.io/splash/docs/all.html
+        style = "tango"
+        # Uncomment if you want your chosen highlight style used for code blocks without a specified language
+        # guessSyntax = "true"
+
+
+################################################################################
+### Security configurations
+################################################################################
+#[security]
+#  enableInlineShortcodes = true
+
+
+################################################################################
+### Site Parameters configurations
+################################################################################
+[params]
+  [params.ui]
+    navbarLogo = true
+    navbarTitle = true
+    navbarTransparentOverCover = true
+    [params.ui.readingtime]
+      enable = true
+
+
+[privacy]
+  [privacy.vimeo]
+    disabled = false
+    simple = true
+
+  [privacy.twitter]
+    disabled = false
+    enableDNT = true
+    simple = true
+
+  [privacy.instagram]
+    disabled = false
+    simple = true
+
+  [privacy.youtube]
+    disabled = false
+    privacyEnhanced = true
+
+[services]
+  [services.instagram]
+    disableInlineCSS = true
+  [services.twitter]
+    disableInlineCSS = true
+  [services.googleAnalytics]
+    id = "UA-00000000-0"
+
+
+################################################################################
+### Site Menu configurations
+################################################################################
+[menu]
+  [[menu.main]]
+    identifier = "products"
+    name = "Products"
+    url = "/products/"
+    weight = 1
+  [[menu.main]]
+    identifier = "solutions"
+    name = "Solutions"
+    url = "/solutions/"
+    weight = 2
+  [[menu.main]]
+    identifier = "docs"
+    name = "Documentation"
+    url = "/docs/"
+    weight = 3
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/blog/"
+    weight = 4
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 5

@@ -1,0 +1,110 @@
+#
+# data/en/menu.toml: "Menu" data (English)
+#
+
+###################################################################################################
+# Main menu
+###################################################################################################
+[[main]]
+  identifier = "products"
+  Name = "Products"
+  URL = "/products/"
+  Weight = 1
+[[main]]
+  identifier = "solutions"
+  Name = "Solutions"
+  URL = "/solutions/"
+  Weight = 2
+[[main]]
+  identifier = "docs"
+  Name = "Documentation"
+  URL = "/docs/"
+  Weight = 11
+[[main]]
+  identifier = "blog"
+  Name = "Blog"
+  URL = "/blog/"
+  Weight = 12
+[[main]]
+  identifier = "about"
+  Name = "About"
+  URL = "/about/"
+  Weight = 30
+
+
+###################################################################################################
+# Footer menu
+###################################################################################################
+[footer]
+  column1_header = "Links"
+  column2_header = "Solutions"
+  column3_header = "Products"
+  column4_header = "Connect"
+
+  [[footer.column1]]
+    identifier = "about-us"
+    Name = "About"
+    URL = "/about/"
+    Weight = 1
+  [[footer.column1]]
+    identifier = "solutions"
+    Name = "Solutions"
+    URL = "/solutions/"
+    Weight = 2
+  [[footer.column1]]
+    identifier = "product"
+    Name = "Products"
+    URL = "/products/"
+    Weight = 3
+
+  [[footer.column2]]
+    identifier = "solution-1"
+    Name = "Solution 1"
+    URL = "/solutions/1/"
+    Weight = 1
+  [[footer.column2]]
+    identifier = "solution-2"
+    Name = "Solution 2"
+    URL = "/solutions/2/"
+    Weight = 2
+  [[footer.column2]]
+    identifier = "solution-3"
+    Name = "Solution 3"
+    URL = "/solutions/3/"
+    Weight = 3
+
+  [[footer.column3]]
+    identifier = "product-1"
+    Name = "Product 1"
+    URL = "/products/1/"
+    Weight = 1
+  [[footer.column3]]
+    identifier = "product-2"
+    Name = "Product 2"
+    URL = "/products/2/"
+    Weight = 2
+  [[footer.column3]]
+    identifier = "product-3"
+    Name = "Product 3"
+    URL = "/products/3/"
+    Weight = 3
+
+  [[footer.column4]]
+    identifier = "blog"
+    Name = "Blog"
+    URL = "/Blog/"
+    Weight = 1
+
+###################################################################################################
+# Copyright Footer menu
+###################################################################################################
+[[copyright]]
+  identifier = "contact-us"
+  Name = "Contact Us"
+  URL = "/contacts/"
+  wight = 1
+[[copyright]]
+  identifier = "privacy-policy"
+  Name = "Privacy Policy"
+  URL = "/privacy/"
+  wight = 2

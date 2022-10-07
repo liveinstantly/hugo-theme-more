@@ -1,0 +1,34 @@
+#
+# data/en/company.toml: "Company" data (English)
+#
+
+name = "Hugo More"
+slogan = "Support building your website with Hugo."
+email = "sales@xxx.xxx"
+address = "Tokyo, Japan"
+phone = "+81 (XX) XXXX XXXX"
+
+[[socials]]
+    title = "linkedin"
+    name = "LinkedIn"
+    icon = "fa-brands fa-linkedin"
+    link = "https://www.linkedin.com/company/dummy/"
+    desc = "Follow us on LinkedIn to get the latest news!"
+[[socials]]
+    title = "facebook"
+    name = "Facebook"
+    icon = "fa-brands fa-square-facebook"
+    link = "https://www.facebook.com/dummy/"
+    desc = "Follow us on Facebook to get the latest news!"
+[[socials]]
+    title = "twitter"
+    name = "Twitter"
+    icon = "fa-brands fa-square-twitter"
+    link = "https://twitter.com/dummy"
+    desc = "Follow us on Twitter to get the latest news!"
+[[socials]]
+    title = "github"
+    name = "GitHub"
+    icon = "fa-brands fa-square-github"
+    link = "https://github.com/dummy/"
+    desc = "Star us on GitHub to get the latest codes!"

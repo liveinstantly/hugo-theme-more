@@ -1,0 +1,110 @@
+#
+# data/ja/menu.toml: "Menu" data (Japanese)
+#
+
+###################################################################################################
+# Main menu
+###################################################################################################
+[[main]]
+  identifier = "products"
+  Name = "製品情報"
+  URL = "/products/"
+  Weight = 1
+[[main]]
+  identifier = "solutions"
+  Name = "ソリューション"
+  URL = "/solutions/"
+  Weight = 2
+[[main]]
+  identifier = "docs"
+  Name = "ドキュメント"
+  URL = "/docs/"
+  Weight = 11
+[[main]]
+  identifier = "blog"
+  Name = "ブログ"
+  URL = "/blog/"
+  Weight = 12
+[[main]]
+  identifier = "about"
+  Name = "会社情報"
+  URL = "/about/"
+  Weight = 30
+
+
+###################################################################################################
+# Footer menu
+###################################################################################################
+[footer]
+  column1_header = "リンク"
+  column2_header = "ソリューション"
+  column3_header = "製品"
+  column4_header = "最新情報"
+
+  [[footer.column1]]
+    identifier = "about-us"
+    Name = "会社情報"
+    URL = "/about/"
+    Weight = 1
+  [[footer.column1]]
+    identifier = "solutions"
+    Name = "ソリューション"
+    URL = "/solutions/"
+    Weight = 2
+  [[footer.column1]]
+    identifier = "product"
+    Name = "製品"
+    URL = "/products/"
+    Weight = 3
+
+  [[footer.column2]]
+    identifier = "solution-1"
+    Name = "ソリューション 1"
+    URL = "/solutions/1/"
+    Weight = 1
+  [[footer.column2]]
+    identifier = "solution-2"
+    Name = "ソリューション 2"
+    URL = "/solutions/2/"
+    Weight = 2
+  [[footer.column2]]
+    identifier = "solution-3"
+    Name = "ソリューション 3"
+    URL = "/solutions/3/"
+    Weight = 3
+
+  [[footer.column3]]
+    identifier = "product-1"
+    Name = "製品 1"
+    URL = "/products/1/"
+    Weight = 1
+  [[footer.column3]]
+    identifier = "product-2"
+    Name = "製品 2"
+    URL = "/products/2/"
+    Weight = 2
+  [[footer.column3]]
+    identifier = "product-3"
+    Name = "製品 3"
+    URL = "/products/3/"
+    Weight = 3
+
+  [[footer.column4]]
+    identifier = "blog"
+    Name = "ブログ"
+    URL = "/Blog/"
+    Weight = 1
+
+###################################################################################################
+# Copyright Footer menu
+###################################################################################################
+[[copyright]]
+  identifier = "contact-us"
+  Name = "お問い合わせ"
+  URL = "/contacts/"
+  wight = 1
+[[copyright]]
+  identifier = "privacy-policy"
+  Name = "プライバシーポリシー"
+  URL = "/privacy/"
+  wight = 2

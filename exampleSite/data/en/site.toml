@@ -1,0 +1,11 @@
+#
+# data/en/site.toml: "Site" data (English)
+#
+
+title = "Hugo More"
+description = "Hugo More - A simple and universal company website template"
+authors = [ "Shige Fukushima", "Other Authors" ]
+logoImg = "icons/logo.png"
+logoEmbedded = "icons/logo.svg"
+logoTitle = "Hugo More"
+copyright = "Copyright © 2022, Shigeyuki Fukushima, All rights reserved."

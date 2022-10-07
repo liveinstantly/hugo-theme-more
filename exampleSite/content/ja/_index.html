@@ -1,0 +1,43 @@
++++
+title = "Home"
+author = "Hugo More Author"
+Description = "Hugo More is a theme for the Hugo static site generator that's specifically designed for simple and unversal websites, which can be applied to multiple purposes, such as company introduction, documentation, blog, and so on."
++++
+
+<!-- section 0 (cover) -->
+
+{{< blocks/section-cover title="Hugo More へようこそ!" image_anchor="top" height="full" color="primary" >}}
+<div class="mx-auto">
+    {{% blocks/link-button link="#" color="primary" icon="fa-solid fa-arrow-alt-circle-right" iconPosition="post" title="詳細について" %}}
+
+    {{% blocks/link-button link="https://github.com/liveinstantly/hugo-theme-more/" target="_blank" color="secondary" icon="fa-brands fa-github" iconPosition="post" title="ダウンロード" %}}
+
+    <p class="lead mt-5">シンプルでかつ多目的に利用可能な企業向けの Web サイトを作成するための Hugo テーマです</p>
+
+    {{< blocks/link-down color="info" label="ui_read_more" >}}
+</div>
+{{< /blocks/section-cover >}}
+
+<!-- section 1 -->
+
+{{< blocks/section-lead >}}
+    <p>Hugo More は Hugo 静的サイト ジェネレーターのテーマで、会社紹介、ドキュメント、ブログなど、複数の目的に適用可能な、シンプルでユニバーサルな Web サイトのために設計されています。</p>
+
+    <p>私たちの目的は、機能する Web サイトをできるだけ簡単に立ち上げて実行できるようにすることで、ユーザーにとって優れたコンテンツの作成に集中できるようにすることです。</p>
+
+    <a href="https://www.netlify.com" target="_blank" rel="noopener">
+    <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" />
+    </a>
+{{< /blocks/section-lead >}}
+
+<!-- section 2 -->
+
+{{< blocks/section color="dark" type="features" >}}
+
+{{< grid-row >}}
+{{% feature icon="fa-brands fa-github" title="Contributions welcome!" url="https://github.com/liveinstantly/hugo-theme-more/" %}}
+**GitHub** で [プル リクエスト](https://github.com/liveinstantly/hugo-theme-more/pulls) での貢献のワークフローを実施しています。 新規ユーザーはいつでも大歓迎です！
+{{%/ feature %}}
+{{</ grid-row >}}
+
+{{</ blocks/section >}}

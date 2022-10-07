@@ -1,0 +1,43 @@
++++
+title = "Home"
+author = "Hugo More Author"
+Description = "Hugo More is a theme for the Hugo static site generator that's specifically designed for simple and unversal websites, which can be applied to multiple purposes, such as company introduction, documentation, blog, and so on."
++++
+
+<!-- section 0 (cover) -->
+
+{{< blocks/section-cover title="Welcome to Hugo More!" image_anchor="top" height="full" color="primary" >}}
+<div class="mx-auto">
+    {{% blocks/link-button link="#" color="primary" icon="fa-solid fa-arrow-alt-circle-right" iconPosition="post" title="Learn More" %}}
+
+    {{% blocks/link-button link="https://github.com/liveinstantly/hugo-theme-more/" target="_blank" color="secondary" icon="fa-brands fa-github" iconPosition="post" title="Download" %}}
+
+    <p class="lead mt-5">A Hugo theme for creating simple and universal company websites.</p>
+
+    {{< blocks/link-down color="info" label="ui_read_more" >}}
+</div>
+{{< /blocks/section-cover >}}
+
+<!-- section 1 -->
+
+{{< blocks/section-lead >}}
+    <p>Hugo More is a theme for the Hugo static site generator that's specifically designed
+for simple and unversal websites, which can be applied to multiple purposes, such as company introduction, documentation, blog, and so on.</p>
+    <p>Our aim is to help you get a working website up and running as easily as possible, so you can concentrate on creating great content for your users.</p>
+    <a href="https://www.netlify.com" target="_blank" rel="noopener">
+    <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" />
+    </a>
+{{< /blocks/section-lead >}}
+
+<!-- section 2 -->
+
+{{< blocks/section color="dark" type="features" >}}
+
+{{< grid-row >}}
+{{% feature icon="fa-brands fa-github" title="Contributions welcome!" url="https://github.com/liveinstantly/hugo-theme-more/" %}}
+We do a [Pull Request](https://github.com/liveinstantly/hugo-theme-more/pulls) contributions workflow on **GitHub**. New users are always welcome!
+{{%/ feature %}}
+
+{{</ grid-row >}}
+
+{{< /blocks/section >}}
