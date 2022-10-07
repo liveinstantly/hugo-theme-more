@@ -1,0 +1,3 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ $name := $data.company.name | default .Site.Title }}
+{{ return $name }}

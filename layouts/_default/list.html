@@ -1,0 +1,10 @@
+{{ define "main" }}
+    {{- /* This template is an indexing page template for every sections */ -}}
+
+    {{ if not hugo.IsProduction }}{{- "<!--[START]=_default/list.html-->" | safeHTML -}}{{ end }}
+    {{/* - range .Pages */}}
+    {{- with .Content }}
+        {{ . }}
+    {{ end -}}
+    {{ if not hugo.IsProduction }}{{- "<!--[END]=_default/list.html-->" | safeHTML -}}{{ end }}
+{{ end }}

@@ -1,0 +1,21 @@
+//
+// assets/scss/layouts/partials/_breadcrumbs.scss
+//
+
+.#{$theme-prefix}breadcrumbs {
+    background-color: $gray-200;
+
+    @media print {
+        display: none !important;
+    }
+
+    .breadcrumb {
+        background-color: $gray-200;
+        padding-left: 0;
+        padding-top: 0;
+    }
+}
+
+.#{$theme-prefix}breadcrumbs-outer.sticky-top {
+    top: $--navbar-min-height;
+}

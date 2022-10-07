@@ -1,0 +1,140 @@
+//
+// assets/scss/layouts/partials/_navbar.scss
+//
+
+// [Template Structure]
+// root
+//   - {{$classPrefix}}navbar
+//     - navbar ({{$classPrefix}}navbar-cover)
+//       - {{$classPrefix}}navbar-container
+//         - {{$classPrefix}}navbar-header
+//           - navbar-brand
+//             - {{$classPrefix}}navbar-logo
+//               - {{$classPrefix}}navbar-logo-img
+//             - {{$classPrefix}}navbar-logo-title
+//         - {{$classPrefix}}navbar-toggle-button
+//           - navbar-toggler
+//             - navbar-toggler-icon
+//         - {{$classPrefix}}navbar-content
+//           - navbar-nav
+
+// Styles for Navbar background
+.#{$theme-prefix}navbar {
+    background: $--bg-navbar-color;
+}
+.#{$theme-prefix}navbar-cover {
+    @include media-breakpoint-up(md) {
+        background: transparent !important;
+    }
+}
+.js-navbar-scroll-bg-onscroll {
+    background: $--bg-navbar-color !important;
+    opacity: inherit;
+}
+
+// Styles for Navbar links
+.navbar {
+    .nav-link {
+        font-weight: $font-weight-bold;
+    }
+    //.nav-link:hover {
+    //    text-decoration: underline;
+    //    text-shadow: 1px 1px 2px $dark;
+    //}
+}
+@include media-breakpoint-down(md) {
+    .navbar {
+        .nav-item {
+            &:hover {
+                background-color: $primary;
+            }
+        }
+    }
+}
+@include media-breakpoint-up(md) {
+    .navbar {
+        .nav-item {
+            position: relative;
+            .nav-link {
+                font-weight: $font-weight-bold;
+                height: $--navbar-min-height;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            }
+            &::before {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 5px;
+                width: 100%;
+                content: '';
+                background: $primary;
+                transform: scaleY(0);
+                transform-origin: top;
+                transition: transform 0.1s ease-in;
+            }
+            &:hover,
+            &.active {
+                background-color: $primary-light;
+                &::before {
+                    transform: scaleY(1);
+                    transform-origin: bottom;
+                }
+            }
+        }
+    }
+}
+
+// Styles for Navbar Height & Logo
+.#{$theme-prefix}navbar {
+    .#{$theme-prefix}navbar-container {
+        min-height: $--navbar-min-height;
+        .#{$theme-prefix}navbar-header {
+            .navbar-brand {
+                .#{$theme-prefix}navbar-logo {
+                    display: inline-block;
+                    height: $--navbar-logo-size;
+                    vertical-align: middle;
+                    .#{$theme-prefix}navbar-logo-img {
+                        height: $--navbar-logo-size;
+                    }
+                }
+                .#{$theme-prefix}navbar-logo-title {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
+        .#{$theme-prefix}navbar-toggle-button {
+            min-height: $--navbar-min-height;
+        }
+    }
+}
+
+// Styles for Navbar Toggler menu
+@include media-breakpoint-down(md) {
+    .navbar-collapse.collapse {
+        .navbar-nav {
+            overflow: auto;
+            max-height: calc(100vh - #{$--navbar-min-height});
+        }
+    }
+    .navbar-collapse {
+        .navbar-nav {
+            .nav-link {
+                padding-top: $spacer * 0.25;
+                padding-bottom: $spacer * 0.25;
+                padding-left: $spacer * 0.5;
+                padding-right: $spacer * 0.5;
+            }
+            .nav-item:first-child {
+                margin-top: $spacer * 0.5;
+            }
+            .nav-item:last-child {
+                margin-bottom: $spacer;
+            }
+        }
+    }
+}

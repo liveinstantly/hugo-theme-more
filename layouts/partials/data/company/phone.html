@@ -1,0 +1,3 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ $phone := $data.company.phone }}
+{{ return $phone }}

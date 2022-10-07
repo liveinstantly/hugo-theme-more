@@ -1,0 +1,3 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ $menu := $data.menu.copyright | default .Site.Menus.copyright }}
+{{ return $menu }}

@@ -1,0 +1,50 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+{{ hugo.Generator }}
+{{ range .AlternativeOutputFormats }}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" />
+{{ end }}
+{{ $outputFormat := partial "format/outputformat.html" . }}
+{{ if and hugo.IsProduction (ne $outputFormat "print") }}
+    <meta name="robots" content="index, follow" />
+{{ else }}
+    <meta name="robots" content="noindex, nofollow" />
+{{ end }}
+
+<title>{{ partial "data/site/head-title.html" . }}</title>
+<meta name="description" content="{{ partial "data/site/description.html" . }}" />
+{{ with partial "data/site/authors.html" . }}
+    <meta name="author" content="{{ . }}" />
+{{ end }}
+
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/schema.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
+
+
+{{- /* Loading icons in <head> tag */ -}}
+{{ partialCached "head-favicons.html" . }}
+
+{{- /* Loading Cascading Style Sheets in <head> tag */ -}}
+{{ partial "head-css.html" . }}
+
+{{- /* Loading Scripts in <head> tag */ -}}
+<!--
+<script
+    src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous"
+>
+-->
+</script>
+{{- /* To comply with GDPR, cookie consent scripts places in head-end must execute before Google Analytics is enabled */ -}}
+{{ if hugo.IsProduction }}
+    {{ if hasPrefix .Site.GoogleAnalytics "G-" }}
+        {{ template "_internal/google_analytics.html" . }}
+    {{ else }}
+        {{ template "_internal/google_analytics_async.html" . }}
+    {{ end }}
+{{ end }}
+
+{{- /* Hooks for a simple template customization */ -}}
+{{- partial "hooks/head-end.html" . -}}

@@ -1,0 +1,5 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+{{- /* Search from 1) data/site.toml, 2) [params.site] in config.toml, 3) titile in config.toml */ -}}
+{{ $copyright := $data.site.copyright | default .Site.Params.site.copyright | default .Site.Copyright }}
+{{ return $copyright }}

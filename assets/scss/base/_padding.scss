@@ -1,0 +1,23 @@
+//
+// assets/scss/base/_padding.scss
+//
+
+.#{$theme-prefix}block-padding {
+    padding-top: $--block-space-top-base * 0.5;
+    padding-bottom: $--block-space-bottom-base * 0.5;
+
+    @include media-breakpoint-up(md) {
+        padding-top: $--block-space-top-base * 0.6;
+        padding-bottom: $--block-space-bottom-base * 0.6;
+    }
+}
+
+.#{$theme-prefix}block-padding-none {
+    padding-top: $--block-space-top-base * 0 !important;
+    padding-bottom: $--block-space-bottom-base * 0 !important;
+
+    @include media-breakpoint-up(md) {
+        padding-top: $--block-space-top-base * 0 !important;
+        padding-bottom: $--block-space-bottom-base * 0 !important;
+    }
+}

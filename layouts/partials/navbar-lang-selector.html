@@ -1,0 +1,12 @@
+{{ $langPage := cond (gt (len .Translations) 0) . .Site.Home }}
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {{ $langPage.Language.LanguageName }}
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end">
+        {{ range $langPage.Translations }}
+            <li><a class="dropdown-item" href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a></li>
+        {{ end }}
+    </ul>
+</li>

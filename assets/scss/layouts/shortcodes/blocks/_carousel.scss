@@ -1,0 +1,41 @@
+//
+// assets/scss/layouts/shortcodes/blocks/_carousel.scss
+//
+
+// Carousel Box & Container adjustments
+.#{$theme-prefix}carousel {
+    padding-left: 0;
+    padding-right: 0;
+}
+.carousel-inner,
+.carousel-item,
+.#{$theme-prefix}carousel-item-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+// Carousel Caption adjustments
+.#{$theme-prefix}carousel-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.carousel-caption {
+    position: relative;
+    width: 75%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+// Carousel Slide Image
+.carousel-item {
+    position: relative;
+    background: {
+        repeat: no-repeat;
+        position: 50% 50%;
+        size: cover;
+    }
+}

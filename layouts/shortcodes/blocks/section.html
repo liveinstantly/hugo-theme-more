@@ -1,0 +1,34 @@
+{{- $classPrefix := partial "_theme.html" -}}
+
+{{ $col_id := .Get "color" | default .Ordinal }}
+{{/* Height can be one of: auto, min, med, max, full. */}}
+{{ $height := .Get "height" | default "auto" }}
+
+{{ $innerType := .Get "innerType" | default "" }}
+{{ $type   := .Get "type" | default "" }}
+
+
+<a id="{{ $classPrefix }}block-{{ .Ordinal }}" class="{{ $classPrefix }}offset-anchor"></a>
+<section
+    class="row {{ $classPrefix }}box {{ $classPrefix }}box--{{ $col_id }} {{ $classPrefix }}box--gradient {{ $classPrefix }}box--height-{{ $height }}"
+>
+    {{/*  */}}
+    <div class="col-12">
+        <div class="container {{ $classPrefix }}section-container {{ $type }}">
+            <div class="{{ $classPrefix }}content">
+                {{ if eq $innerType "html" }}
+                    {{ .Inner | htmlUnescape | safeHTML }}
+                {{ else if eq $innerType "md" }}
+                    {{ .Inner | markdownify }}
+                {{ else }}
+                    {{ if eq .Page.File.Ext "md" }}
+                        {{ .Inner | markdownify }}
+                    {{ else }}
+                        {{ .Inner | htmlUnescape | safeHTML }}
+                    {{ end }}
+                {{ end }}
+            </div>
+        </div>
+    </div>
+    {{/*  */}}
+</section>

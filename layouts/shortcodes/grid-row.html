@@ -1,0 +1,18 @@
+{{- $classPrefix := partial "_theme.html" -}}
+
+{{ $innerType := .Get "innerType" | default "" }}
+{{ $type   := .Get "type" | default "" }}
+
+<div class="row pt-3 justify-content-center{{ if $type }} {{ . }}{{ end }}">
+    {{ if eq $innerType "html" }}
+        {{ .Inner | htmlUnescape | safeHTML }}
+    {{ else if eq $innerType "md" }}
+        {{ .Inner | markdownify }}
+    {{ else }}
+        {{ if eq .Page.File.Ext "md" }}
+            {{ .Inner | markdownify }}
+        {{ else }}
+            {{ .Inner | htmlUnescape | safeHTML }}
+        {{ end }}
+    {{ end }}
+</div>

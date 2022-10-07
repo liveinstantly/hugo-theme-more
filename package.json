@@ -1,0 +1,17 @@
+{
+    "name": "hugo-theme-more",
+    "version": "0.1.0-dev",
+    "repository": "https://github.com:liveinstantly/hugo-theme-more",
+    "scripts": {
+        "_cd:example": "cd exampleSite &&",
+        "cd:example": "npm run _cd:example -- npm run",
+        "serve": "npm run cd:example serve"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.12",
+        "postcss": "^8.4.16",
+        "postcss-cli": "^10.0.0",
+        "prettier": "^2.7.1",
+        "prettier-plugin-go-template": "^0.0.13"
+    }
+}

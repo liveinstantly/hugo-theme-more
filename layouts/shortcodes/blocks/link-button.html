@@ -1,0 +1,14 @@
+{{- $classPrefix := partial "_theme.html" -}}
+{{- $title := $.Get "title" | default "#" -}}
+{{- $link := $.Get "link" | default "#" -}}
+{{- $color := $.Get "color" | default "primary" -}}
+{{- $icon := $.Get "icon" | default "" -}}
+{{- $iconPosition := $.Get "iconPosition" | default "" -}}
+{{- $target := $.Get "target" -}}
+
+
+<a class="btn btn-lg btn-{{ $color }} mr-3 mb-4" href="{{ $link }}" {{ with $target }}target="{{ . }}"{{ end }}>
+    {{- if eq $iconPosition "pre" }}<i class="{{ $icon }} me-2"></i>{{- end -}}
+    {{- $title -}}
+    {{- if eq $iconPosition "post" -}}<i class="{{ $icon }} ms-2"></i>{{- end -}}
+</a>

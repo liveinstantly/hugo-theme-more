@@ -1,0 +1,42 @@
+//
+// assets/scss/main.scss
+//
+
+// Variables and Helpers
+@import 'helpers/functions';
+@import 'variables_project';
+@import 'variables';
+@import 'helpers/mixins';
+
+// Bootstrap v5.x
+@import '../vendors/bootstrap/scss/bootstrap';
+// Font-Awesome v6.x: Classic (Solid, Regular (partially)) and Brands Fonts
+@import '../vendors/Font-Awesome/scss/fontawesome.scss';
+@import '../vendors/Font-Awesome/scss/solid.scss';
+@import '../vendors/Font-Awesome/scss/regular.scss';
+@import '../vendors/Font-Awesome/scss/brands.scss';
+
+// Base
+@import 'base/colors';
+@import 'base/boxes';
+@import 'base/anchor';
+@import 'base/buttons';
+@import 'base/borders';
+@import 'base/overlay';
+@import 'base/padding';
+@import 'base/content';
+@import 'base/content-code';
+@import 'base/utils';
+// Layouts/_default
+@import 'layouts/default';
+// Template - 'partials'
+@import 'layouts/partials/footer';
+@import 'layouts/partials/footer-copyright';
+@import 'layouts/partials/navbar';
+@import 'layouts/partials/breadcrumbs';
+// Template - 'shortcodes'
+@import 'layouts/shortcodes/blocks/carousel';
+@import 'layouts/shortcodes/blocks/cover';
+
+@import 'styles_project';
+// End of Imports

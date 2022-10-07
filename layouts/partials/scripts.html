@@ -1,0 +1,27 @@
+<script
+    src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous"
+></script>
+<!--
+<script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"
+></script>
+-->
+
+{{- /* Load local JS scripts and combine to main.js */ -}}
+{{ $jsMain := "js/main.js" }}
+{{ $jsPopper := resources.GetRemote "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" }}
+{{ $jsBootstrap := resources.Get "vendors/bootstrap/dist/js/bootstrap.min.js" }}
+{{ $jsNavbarScroll := resources.Get "js/navbar-scroll.js" -}}
+{{ $jsAnchor := resources.Get "js/anchor.js" -}}
+{{ $js := (slice $jsPopper $jsBootstrap $jsNavbarScroll $jsAnchor) | resources.Concat $jsMain }}
+
+{{ if hugo.IsProduction }}
+    {{ $js := $js | minify | fingerprint }}
+    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+{{ else }}
+    <script src="{{ $js.RelPermalink }}"></script>
+{{ end }}

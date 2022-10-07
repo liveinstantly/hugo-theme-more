@@ -1,0 +1,60 @@
+//
+// assets/scss/layouts/_default.scss
+//
+
+// styles for default ("_default") template
+html,
+body {
+    height: 100%;
+}
+
+body > footer {
+    position: sticky;
+    top: 100vh;
+}
+
+// The outer page container
+.#{$theme-prefix}outer {
+    display: flex;
+    flex-direction: column;
+}
+
+.#{$theme-prefix}main {
+    flex-grow: 1;
+}
+
+.#{$theme-prefix}default {
+    main {
+        section:first-of-type {
+            padding-top: $--block-space-top-base * 2;
+        }
+
+        section:last-of-type {
+            padding-bottom: $--block-space-top-base;
+        }
+
+        section {
+            @extend .#{$theme-prefix}block-padding;
+        }
+
+        // No padding for cover-block
+        section.#{$theme-prefix}cover-block--no-padding {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        section.#{$theme-prefix}box--no-padding {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+}
+
+.#{$theme-prefix}main main {
+    padding-top: $--block-space-top-base * 1.5;
+    padding-bottom: $--block-space-top-base * 0.5;
+}
+
+//.#{$theme-prefix}404 main {
+//    padding-top: $--block-space-top-base * 1.5;
+//    padding-bottom: $--block-space-top-base * 0.5;
+//}

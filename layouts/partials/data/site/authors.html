@@ -1,0 +1,10 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+{{- /* Search from 1) data/site.toml, 2) [params.site] in config.toml */ -}}
+{{ $authors := $data.site.authors | default .Site.Params.site.authors }}
+{{- with $authors }}
+    {{- range $i, $v := . }}
+        {{- if $i }},{{ end -}}
+        {{ $v | safeHTML -}}
+    {{ end -}}
+{{ end -}}

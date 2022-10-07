@@ -1,0 +1,163 @@
+//
+// assets/scss/_variables.scss
+//
+
+$theme-prefix: hugo-more- !default;
+
+// ------------------------------------------------------------------------------------------------
+// Theme Flags: variables in this theme
+// ------------------------------------------------------------------------------------------------
+
+$enable-gradients: true !default;
+$enable-rounded: true !default;
+$enable-shadows: true !default;
+$enable-google-fonts: false !default;
+$enable-grid-classes: true !default;
+
+// Font definitions
+
+// Google Fonts
+$google-font-name: 'Open Sans' !default;
+$google-font-family: 'Open+Sans:300,300i,400,400i,700,700i' !default;
+$web-font-path: 'https://fonts.googleapis.com/css?family=#{$google-font-family}&display=swap';
+// Font Awesome Fonts
+$font-awesome-font-name: 'Font Awesome 6 Free' !default;
+// Font Families
+$--fonts-family-sans-serif: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+@if $enable-google-fonts {
+    $--fonts-family-sans-serif: prepend($--fonts-family-sans-serif, '#{$google-font-name}');
+}
+
+// ------------------------------------------------------------------------------------------------
+// Bootstrap Overrides: variables defined in Bootstrap v5.x
+// ------------------------------------------------------------------------------------------------
+
+// Color System:
+
+$primary: #6200ee !default;
+$primary-light: lighten($primary, 25%) !default;
+//$secondary: #03DAC6 !default;
+$secondary: #f93686 !default;
+$secondary-light: lighten($secondary, 25%) !default;
+$success: #00c851 !default;
+$info: #33b5e5 !default;
+$warning: #ffbb33 !default;
+$danger: #ff4444 !default;
+$white: #fff !default;
+$black: #000 !default;
+$light: rgba($white, 0.65) !default;
+$dark: rgba($black, 0.65) !default;
+$blue: #78b5e7 !default;
+$orange: #fa8806 !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #eee !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ccc !default;
+$gray-500: #adb5bd !default;
+$gray-600: #797676 !default;
+$gray-700: #495057 !default;
+$gray-800: #333 !default;
+$gray-900: #222 !default;
+
+$code-color: darken($secondary, 20%) !default;
+
+$yiq-contrasted-threshold: 200 !default;
+
+// UI element colors:
+//  Border
+$border-color: $gray-300 !default;
+//  Link
+$link-color: darken($primary, 15%) !default;
+$link-decoration: none !default;
+$link-hover-color: darken($link-color, 15%) !default;
+$link-hover-decoration: none !default;
+//  Navbar
+$navbar-dark-color: rgba($white, 0.65) !default;
+$navbar-dark-hover-color: rgba($white, 0.9) !default;
+$navbar-dark-active-color: $white !default;
+$navbar-dark-disabled-color: rgba($white, 0.25) !default;
+//  Pagination
+$pagination-color: $gray-600 !default;
+$pagination-border-color: rgba($black, 0.1) !default;
+$pagination-active-border-color: darken($primary, 5%) !default;
+$pagination-disabled-color: $gray-300 !default;
+// Breadcrumb
+$breadcrumb-divider-color: $gray-600 !default;
+$breadcrumb-active-color: $secondary !default;
+$breadcrumb-divider: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8'><path d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='#{$breadcrumb-divider-color}'/></svg>") !default;
+$breadcrumb-divider-flipped: $breadcrumb-divider;
+$breadcrumb-margin-bottom: 0;
+
+// Space
+$spacer: 1rem !default;
+
+// Font Size
+$font-size-base: 1rem !default;
+$h1-font-size: $font-size-base * 2.25 !default;
+$h2-font-size: $font-size-base * 2 !default;
+$h3-font-size: $font-size-base * 1.5 !default;
+$h4-font-size: $font-size-base * 1.35 !default;
+$h5-font-size: $font-size-base * 1.15 !default;
+$h6-font-size: $font-size-base !default;
+
+// Font weights
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-bold: 700 !default;
+
+$display-font-sizes: (
+    1: 3rem,
+    2: 2.5rem,
+    3: 2rem,
+    4: 1.75rem,
+    5: 1.5rem,
+    6: 1.25rem
+) !default;
+$display-font-weight: $font-weight-bold !default;
+
+// Font Families
+$font-family-sans-serif: $--fonts-family-sans-serif !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
+$font-family-base: $font-family-sans-serif !default;
+$font-family-code: $font-family-monospace !default;
+
+// ------------------------------------------------------------------------------------------------
+// Theme design variables: variables in this theme
+// ------------------------------------------------------------------------------------------------
+
+// Theme Colors
+// Background colors for the sections on home page etc.
+// It is a paint by number system, starting at 0, where the number is taken
+// from the shortcode's ordinal if not provided by the user.
+// These colors are all part of the theme palette,
+// but the mix is fairly random to create variation.
+// This can be overridden by the project if needed.
+$--box-colors: $dark, $primary, $secondary, $info, $primary-light, $gray-600, $success, $warning, $dark, $danger, $primary, $secondary, $primary-light,
+    $info !default;
+
+// Navbar
+$--bg-navbar-color: $primary !default;
+$--navbar-min-height: 4 * $spacer !default;
+$--navbar-logo-size: 2 * $spacer !default;
+$--navbar-logo-small-size: $spacer !default;
+
+// Footer
+$--bg-footer-color: $gray-200 !default;
+
+// Sidebar
+$--sidebar-tree-root-color: $primary !default;
+$--sidebar-bg-color: rgba($primary, 0.03) !default;
+$--sidebar-border-color: $border-color !default;
+
+// Spacer
+$--block-space-top-base: 4 * $spacer !default;
+$--block-space-bottom-base: 4 * $spacer !default;
+$--block-space-left-base: 4 * $spacer !default;
+$--block-space-right-base: 4 * $spacer !default;
+$--anchor-space-top-base: -4 * $spacer !default;
+$--anchor-height-base: 4 * $spacer !default;
+
+// Font
+$--body-text-font-weight: $font-weight-normal !default;

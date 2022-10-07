@@ -1,0 +1,9 @@
+{{ define "main" }}
+    {{- /* This template is only for the site top page (/) */ -}}
+
+    {{ if not hugo.IsProduction }}{{- "<!--[START]=home.html-->" | safeHTML -}}{{ end }}
+    {{ with .Content }}
+        {{ . }}
+    {{ end }}
+    {{ if not hugo.IsProduction }}{{- "<!--[END]=home.html-->" | safeHTML -}}{{ end }}
+{{ end }}

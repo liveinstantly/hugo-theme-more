@@ -1,0 +1,30 @@
+//
+// assets/scss/layouts/shortcodes/blocks/_cover.scss
+//
+
+@include box-height-modifiers('.#{$theme-prefix}cover-block');
+
+.#{$theme-prefix}-cover-logo {
+    margin-right: 0.5em;
+}
+
+.#{$theme-prefix}cover-block {
+    position: relative;
+    padding-top: $--block-space-top-base * 1.25;
+    padding-bottom: $--block-space-top-base * 1.25;
+    background: {
+        repeat: no-repeat;
+        position: 50% 50%;
+        size: cover;
+    }
+    &--no-padding {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    & > .byline {
+        position: absolute;
+        bottom: 2px;
+        right: 4px;
+    }
+}

@@ -1,0 +1,5 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+{{- /* Search from 1) .Page.Description, 2) [params.site] in config.toml, 3) truncated .Page.Content */ -}}
+{{ $desc := .Page.Description | default $data.site.description | default (.Page.Content | safeHTML | truncate 240) }}
+{{ return ( $desc | safeHTML ) }}

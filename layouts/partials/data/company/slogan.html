@@ -1,0 +1,3 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ $slogan := $data.company.slogan }}
+{{ return $slogan }}

@@ -1,0 +1,29 @@
+{{- $classPrefix := partial "_theme.html" -}}
+
+{{ $breadcrumb := (split .Page.RelPermalink "/") }}
+{{ $breadcrumb_index := (sub (len $breadcrumb) 2) }}
+{{ $lang := .Page.Lang }}
+
+<nav aria-label="breadcrumb" class="{{ $classPrefix }}breadcrumbs">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{ .Site.Home.RelPermalink }}">
+                <div class="d-inline-block fw-semibold">{{ .Site.Params.home | default "Home" }}</div>
+            </a>
+        </li>
+        {{ $.Scratch.Set "path" "" }}
+        {{ range first $breadcrumb_index $breadcrumb }}
+        {{ if and (gt (len .) 0) (ne . $lang) }}
+        {{ $path := $.Scratch.Get "path" }}
+        {{ $path := printf . | printf "%s/%s" $path }}
+        {{ $.Scratch.Set "path" $path }}
+        <li class="breadcrumb-item">
+            <a href="{{ $path | relLangURL }}">
+                <div class="d-inline-block fw-semibold">{{ T . | default . }}</div>
+            </a>
+        </li>
+        {{ end }}
+        {{ end }}
+        <li class="breadcrumb-item active fw-bold" aria-current="page">{{ T .Page.Title | default .Page.Title }}</li>
+    </ol>
+</nav>

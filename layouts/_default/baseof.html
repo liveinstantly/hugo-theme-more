@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+{{- /* This template is a base HTML structure template for every pages */ -}}
+
+{{ if not hugo.IsProduction }}{{- "<!--[START]=_default/baseof.html-->" | safeHTML -}}{{ end }}
+{{- $classPrefix := partial "_theme.html" -}}
+<html itemscope itemtype="http://schema.org/WebPage" lang="{{ .Site.Language.Lang | default "en" }}" class="no-js">
+    <head>
+        {{- partial "head.html" . -}}
+    </head>
+    <body class="{{$classPrefix}}{{ .Kind }}">
+        <header id="header-navbar-outer">
+            {{- partial "navbar.html" . -}}
+        </header>
+        <div id="main-outer" class="{{$classPrefix}}default {{$classPrefix}}outer">
+            <main role="main" class="{{$classPrefix}}main">
+                {{/* Container for multiple sections */}}
+                <div class="container-fluid">
+                    {{- block "main" . -}}{{- end -}}
+                </div>
+                {{/* Container for multiple sections */}}
+            </main>
+        </div>
+        <footer id="footer-outer">
+            {{- partial "footer.html" . -}}
+        </footer>
+        <footer id="copyright-outer">
+            {{- partial "footer-copyright.html" . -}}
+        </footer>
+        {{- partial "scripts.html" . -}}
+
+        {{- /* Hooks for a simple template customization */ -}}
+        {{- partial "hooks/body-end.html" . -}}
+    </body>
+</html>
+{{ if not hugo.IsProduction }}{{- "<!--[END]=_default/baseof.html-->" | safeHTML -}}{{ end }}

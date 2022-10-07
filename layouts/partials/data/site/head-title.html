@@ -1,0 +1,11 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+{{- /* Search from 1) data/site.toml, 2) [params.site] in config.toml, 3) titile in config.toml */ -}}
+{{ $title := $data.site.title | default .Site.Params.site.title | default .Site.Title }}
+
+{{- /* $title be added to a target article */ -}}
+{{ if $title }}
+    {{ return printf "%s | %s" .Title $title }}
+{{ else }}
+    {{ return .Title }}
+{{ end }}

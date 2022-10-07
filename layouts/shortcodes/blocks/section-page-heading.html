@@ -1,0 +1,61 @@
+{{- $classPrefix := partial "_theme.html" -}}
+
+{{ $blockID := printf "%scover-block-%d" $classPrefix .Ordinal }}
+
+{{ $col_id := .Get "color" | default .Ordinal }}
+{{/* Height can be one of: auto, min, med, max, full. */}}
+{{ $height := .Get "height" | default "auto" }}
+{{ $image_anchor := .Get "image_anchor" | default "smart" }}
+
+{{ $page_header_image := (.Page.Resources.ByType "image").GetMatch "**page-header*" }}
+{{ .Scratch.Set "page_header_image" $page_header_image }}
+{{ if not $page_header_image }}
+    {{ $page_header_image := resources.Get "images/page-title-bg-bubble-primary.jpg" }}
+    {{ .Scratch.Set "page_header_image" $page_header_image }}
+{{ end }}
+{{ $page_header_image := .Scratch.Get "page_header_image" }}
+
+{{ with $page_header_image }}
+    {{ $page_header_image_small := (.Fill (printf "960x540 %s" $image_anchor)) }}
+    {{ $page_header_image_large := (.Fill (printf "1920x1080 %s" $image_anchor)) }}
+    <link rel="preload" as="image" href="{{ $page_header_image_small.RelPermalink }}" media="(max-width: 960px)" />
+    <link rel="preload" as="image" href="{{ $page_header_image_large.RelPermalink }}" media="(min-width: 960px)" />
+    <style>
+    #{{ $blockID }} {
+        background-image: url({{ $page_header_image_small.RelPermalink }});
+    }
+    @media only screen and (min-width: 960px) {
+        #{{ $blockID }} {
+            background-image: url({{ $page_header_image_large.RelPermalink }});
+        }
+    }
+    </style>
+{{ end }}
+
+
+<a id="{{ $classPrefix }}block-{{ .Ordinal }}" class="{{ $classPrefix }}offset-anchor"></a>
+<section
+    id="{{ $blockID }}"
+    class="row {{ $classPrefix }}cover-block {{ $classPrefix }}box {{ $classPrefix }}box--{{ $col_id }} {{ $classPrefix }}box--gradient {{ $classPrefix }}box--height-{{ $height }} {{ $classPrefix }}overlay {{ $classPrefix }}overlay--dark
+    {{- if .Site.Params.ui.navbarTransparentOverCover }} js-navbar-scroll-cover-content{{ end -}}">
+    {{/*  */}}
+    <div class="col-12">
+        <div class="container {{ $classPrefix }}section-container {{ $classPrefix }}overlay--inner">
+            <div class="text-white {{ $classPrefix }}page-title">
+                <h1>{{ .Page.Title }}</h1>
+                <p>{{ .Page.Description }}</p>
+            </div>
+        </div>
+    </div>
+    {{/*  */}}
+</section>
+
+<div class="{{ $classPrefix }}breadcrumbs-outer sticky-top">
+    <div class="row {{ $classPrefix }}box {{ $classPrefix }}box--no-padding ">
+        <div class="container-fluid py-1 border-bottom border-top {{ $classPrefix }}breadcrumbs">
+            <div class="container {{$classPrefix}}content">
+                {{ partial "breadcrumb-relpermalink.html" . }}
+            </div>
+        </div>
+    </div>
+</div>

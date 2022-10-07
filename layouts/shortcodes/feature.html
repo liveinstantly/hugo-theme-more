@@ -1,0 +1,14 @@
+{{- $classPrefix := partial "_theme.html" -}}
+
+{{ $column := .Get "column" | default "col-lg-4 mb-5 mb-lg-0" }}
+{{ $icon := .Get "icon" | default "" -}}
+{{ $imgClass := .Get "imgClass" | default "img-fluid" }}
+{{ $image_src_static := .Get "image" | relURL | default "" }}
+{{ $url_text := .Get "url_text" -}}
+
+<div class="{{ $column }} text-center">
+    <div class="h1 mb-3">{{ with $icon }}<i class="{{ . }}"></i>{{ end }}{{ if not (eq $image_src_static "/") }}<img src="{{ $image_src_static }}" class="{{- .Get "imgClass" -}}" alt="{{- .Get "title" | markdownify -}}" />{{ end }}</div>
+    <h4 class="h3 my-3">{{- .Get "title" | markdownify -}}</h4>
+    <div class="mb-0">{{ .Inner }}</div>
+    {{ with .Get "url" }}<p><a href="{{ . }}">{{ with $url_text }}{{ $url_text }}{{ else }}{{ T "ui_read_more" }}{{ end }} …</a></p>{{ end }}
+</div>

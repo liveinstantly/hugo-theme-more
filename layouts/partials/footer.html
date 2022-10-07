@@ -1,0 +1,122 @@
+{{- $classPrefix := partial "_theme.html" -}}
+
+{{- /* Footer */ -}}
+<div class="{{$classPrefix}}footer">
+    <div class="container pt-5 pb-5 {{$classPrefix}}footer-container">
+        <div class="row justify-content-between">
+            {{- /* column: Company */ -}}
+            <div class="{{$classPrefix}}footer-company col-lg-3">
+                <ul class="list-unstyled">
+                    <li class="mb-1">
+                        <div class="company-name display-6">{{ partial "data/company/name.html" . }}</div>
+                    </li>
+                    {{ with partial "data/company/slogan.html" . }}
+                        <li class="mb-2">
+                            <div class="company-slogan">{{ . }}</div>
+                        </li>
+                    {{ end }}
+                    {{ with partial "data/company/email.html" . }}
+                        <li
+                            class="list-inline-item"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title
+                            area-label="email"
+                            data-original-label="email"
+                        >
+                            <a class="" href="mailto:{{ . }}">
+                                <i class="fa fa-envelope mr-1"></i>
+                                <span>{{ . }}</span>
+                            </a>
+                        </li>
+                    {{ end }}
+                </ul>
+            </div>
+            {{- /* column: Column1 */ -}}
+            {{ with partial "data/menu/footer.html" . }}
+            {{ if isset . "column1_header" }}
+            <div class="{{$classPrefix}}footer-column1 col-12 col-sm-6 col-lg-2 offset-lg-1">
+                    {{ if isset . "column1_header" }}
+                    <h5>{{ .column1_header }}</h5>
+                    <ul class="list-unstyled">
+                        {{ range sort .column1 "Weight" "asc" }}
+                            <li class="mb-2">
+                                <a class="" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                            </li>
+                        {{ end }}
+                    </ul>
+                    {{ end }}
+            </div>
+            {{ end }}
+            {{ end }}
+            {{- /* column: Column2 */ -}}
+            {{ with partial "data/menu/footer.html" . }}
+            {{ if isset . "column2_header" }}
+            <div class="{{$classPrefix}}footer-column2 col-12 col-sm-6 col-lg-2">
+                    <h5>{{ .column2_header }}</h5>
+                    <ul class="list-unstyled">
+                        {{ range sort .column2 "Weight" "asc" }}
+                            <li class="mb-2">
+                                <a class="" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                            </li>
+                        {{ end }}
+                    </ul>
+            </div>
+            {{ end }}
+            {{ end }}
+            {{- /* column: Column3 */ -}}
+            {{ with partial "data/menu/footer.html" . }}
+            {{ if isset . "column3_header" }}
+            <div class="{{$classPrefix}}footer-column3 col-12 col-sm-6 col-lg-2">
+                    <h5>{{ .column3_header }}</h5>
+                    <ul class="list-unstyled">
+                        {{ range sort .column3 "Weight" "asc" }}
+                            <li class="mb-2">
+                                <a class="" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                            </li>
+                        {{ end }}
+                    </ul>
+            </div>
+            {{ end }}
+            {{ end }}
+            {{- /* column: Column4 */ -}}
+            <div class="{{$classPrefix}}footer-column4 col-12 col-sm-6 col-lg-2">
+                {{ with partial "data/menu/footer.html" . }}
+                    <h5>{{ .column4_header }}</h5>
+                    <ul class="list-unstyled">
+                        {{ range sort .column4 "Weight" "asc" }}
+                            <li class="mb-2">
+                                <a class="" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                            </li>
+                        {{ end }}
+                    </ul>
+                {{ end }}
+                <ul class="list-inline">
+                    {{ with partial "data/company/socials.html" . }}
+                        {{ range . }}
+                            <li
+                                class="list-inline-item mb-2"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title
+                                area-label="{{ .name }}"
+                                data-original-label="{{ .name }}"
+                            >
+                                <a
+                                    class="d-inline-block "
+                                    target="_blank"
+                                    rel="noopener"
+                                    aria-label="{{ .name }}"
+                                    href="{{ .link | safeURL }}"
+                                >
+                                    <i class="{{ .icon }} fa-2xl"></i>
+                                </a>
+                            </li>
+                        {{ end }}
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{{- /* Footer */ -}}

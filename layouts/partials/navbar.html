@@ -1,0 +1,99 @@
+{{- $classPrefix := partial "_theme.html" -}}
+
+{{ $cover := and
+    (or (or (.HasShortcode "blocks/section-cover") (.HasShortcode "blocks/section-carousel")) (.Params.navbarTransparentOverCover))
+    (.Site.Params.ui.navbarTransparentOverCover)
+-}}
+{{ $currentCtx := . }}
+<div class="fixed-top">
+    <div class="w-100 {{$classPrefix}}navbar js-navbar-scroll{{ if $cover }} {{$classPrefix}}navbar-cover{{ end }}">
+        <nav class="navbar navbar-expand-md navbar-dark p-0">
+            <div class="container {{$classPrefix}}navbar-container">
+                <div class="{{$classPrefix}}navbar-header">
+                    <a class="navbar-brand" href="{{ .Site.Home.RelPermalink }}">
+                        <span class="{{$classPrefix}}navbar-logo">
+                            {{- if .Site.Params.ui.navbarLogo -}}
+                                {{ $logoTitle := partial "data/site/logo-title.html" . }}
+                                {{ $logoImg := partial "data/site/logo-image.html" . }}
+                                {{ $logoEmbedded := partial "data/site/logo-embedded.html" . }}
+                                {{ $logoImgPath := printf "static/%s" $logoImg }}
+                                {{ if (fileExists ($logoImgPath)) -}}
+                                    <img
+                                        class="img-fluid {{$classPrefix}}navbar-logo-img"
+                                        src="{{ $logoImg | relURL }}"
+                                        alt="{{ $logoTitle }}"
+                                    />
+                                {{ else -}}
+                                    {{ with resources.Get $logoEmbedded -}}
+                                        {{ ( . | minify).Content | safeHTML -}}
+                                    {{ end -}}
+                                {{ end -}}
+                            {{ end -}}
+                        </span>
+                        <span
+                            class="
+                            {{- if not .Site.Params.ui.navbarTitle -}}
+                                sr-only visually-hidden
+                            {{ end -}}
+                            {{$classPrefix}}navbar-logo-title font-weight-bold"
+                        >
+                            {{ partial "data/site/logo-title.html" . }}
+                        </span>
+                    </a>
+                </div>
+                <div class="{{$classPrefix}}navbar-toggle-button d-flex align-items-center">
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="{{$classPrefix}}navbar-content collapse navbar-collapse ps-4" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto ms-auto">
+                        {{ with partial "data/menu/main.html" . }}
+                            {{ range sort . "Weight" "asc" }}
+                                {{ if .HasChildren }}
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link text-nowrap d-inline-block pr-0" href="{{ .URL | relLangURL }}">
+                                            {{ .Name }}
+                                        </a>
+                                        <a
+                                            class="nav-link d-inline-block dropdown-toggle pl-0"
+                                            href="{{ .URL | relLangURL }}"
+                                            id="navbarDropdown"
+                                            role="button"
+                                            data-toggle="dropdown"
+                                            aria-label=">"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
+                                            <b class="caret"></b>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            {{ range .Children }}
+                                                <a class="dropdown-item" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                                            {{ end }}
+                                        </div>
+                                    </li>
+                                {{ else }}
+                                    <li class="nav-item">
+                                        <a class="nav-link text-nowrap{{ if eq $currentCtx.RelPermalink (.URL | relLangURL) }} active{{end}}" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                                    </li>
+                                {{ end }}
+                            {{ end }}
+                        {{ end }}
+                        {{ if (gt (len .Site.Home.Translations) 0) -}}
+                            {{ partial "navbar-lang-selector.html" . -}}
+                        {{ end -}}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

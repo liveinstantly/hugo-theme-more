@@ -1,0 +1,3 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ $socials := $data.company.socials | default .Site.Params.socials }}
+{{ return $socials }}

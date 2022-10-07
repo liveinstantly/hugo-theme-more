@@ -1,0 +1,35 @@
+{
+    "lang": "en-us",
+    "name": "Hugo More Progressive Web App",
+    "short_name": "Hugo More",
+    "description": "Progressive Web App for Hugo More theme & example website.",
+    "start_url": "/",
+    "theme_color": "#F93686",
+    "background_color": "#6200EE",
+    "display": "fullscreen",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "/favicons/pwa-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicons/pwa-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicons/pwa-maskable-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/favicons/pwa-maskable-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

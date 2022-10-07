@@ -1,0 +1,103 @@
+{{- $classPrefix := partial "_theme.html" -}}
+
+{{ $blockID := printf "%scover-block-%d" $classPrefix .Ordinal }}
+{{ $carouselID := printf "%scarousel-%d" $classPrefix .Ordinal }}
+{{ $content := .Get "content" }}
+{{ $dataset := .Get "dataset" }}
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ $carouselData := index $data $dataset }}
+{{ $image_anchor := .Get "image_anchor" | default "smart" }}
+{{/* Height can be one of: auto, min, med, max, full. */}}
+{{ $height := .Get "height" | default "max" }}
+{{ $background_image := (.Page.Resources.ByType "image").GetMatch "**background*" }}
+
+{{ $.Scratch.Set "index" 0 }}
+{{ range $carouselData.item }}
+    {{ $carouselSlideID := printf "%s-slide-%d" $carouselID ($.Scratch.Get "index") }}
+    {{ $image := resources.Get .bg_image }}
+    {{ with $image }}
+        {{ $carousel_bg_image_large := (.Fill (printf "1920x1080 %s" $image_anchor)) }}
+        {{ $carousel_bg_image_small := (.Fill (printf "960x540 %s" $image_anchor)) }}
+        <link rel="preload" as="image" href="{{ $carousel_bg_image_large.RelPermalink }}" media="(min-width: 960px)" />
+        <link rel="preload" as="image" href="{{ $carousel_bg_image_small.RelPermalink }}" media="(max-width: 960px)" />
+        <style>
+        #{{ $carouselSlideID }} {
+            background-image: url({{ $carousel_bg_image_small.RelPermalink }});
+        }
+        @media only screen and (min-width: 960px) {
+            #{{ $carouselSlideID }} {
+                background-image: url({{ $carousel_bg_image_large.RelPermalink }});
+            }
+        }
+        </style> {{ $.Scratch.Add "index" 1 }}
+    {{ end }}
+{{ end }}
+
+
+<section
+    id="{{ $blockID }}"
+    class="row {{ $classPrefix }}cover-block {{ $classPrefix }}cover-block--no-padding {{ $classPrefix }}cover-block--height-{{ $height }}
+    {{ if .Site.Params.ui.navbarTransparentOverCover -}}js-navbar-scroll-cover-content{{end}}"
+>
+    <div id="{{ $carouselID }}" class="col-12 carousel slide {{ $classPrefix }}carousel" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            {{ $.Scratch.Set "index" 0 }}
+            {{ range $carouselData.item }}
+                {{ $index := $.Scratch.Get "index" }}
+                <button
+                    type="button"
+                    data-bs-target="#{{ $carouselID }}"
+                    data-bs-slide-to="{{ $index }}"
+                    {{ if eq ($.Scratch.Get "index") 0 }}
+                        class="active" aria-current="true"
+                    {{end}}
+                    aria-label="{{ .title }}">
+                </button>
+                {{ $.Scratch.Add "index" 1 }}
+            {{ end }}
+        </div>
+        <div class="carousel-inner">
+            {{ $.Scratch.Set "index" 0 }}
+            {{ range $carouselData.item }}
+                {{ $carouselSlideID := printf "%s-slide-%d" $carouselID ($.Scratch.Get "index") }}
+                <div
+                    id="{{ $carouselSlideID }}"
+                    class="col carousel-item {{ $classPrefix }}overlay {{ $classPrefix }}overlay--dark{{- if eq ($.Scratch.Get "index") 0 }} active{{ end -}}"
+                >
+                    <div class="container {{ $classPrefix }}carousel-item-container {{ $classPrefix }}overlay--inner">
+                        <div class="carousel-caption {{ .text_align }}">
+                            <div class="display-1 mb-3">{{ .title }}</div>
+                            <div class="display-5 mb-5">{{ .content | markdownify }}</div>
+                            {{ if .button.enable }}
+                                {{ if eq .button.link "" }}
+                                    <p>
+                                        <a class="btn btn-lg btn-primary"
+                                            href="javascript:{{ .button.onclick }}();" role="button">
+                                            {{ .button.label }}
+                                        </a>
+                                    </p>
+                                {{ else }}
+                                    <p>
+                                        <a class="btn btn-lg btn-primary"
+                                            href="{{ .button.link | relLangURL }}" role="button">
+                                            {{ .button.label }}
+                                        </a>
+                                    </p>
+                                {{ end }}
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+                {{ $.Scratch.Add "index" 1 }}
+            {{end}}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#{{ $carouselID }}" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only visibility-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#{{ $carouselID }}" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only visibility-hidden">Next</span>
+        </button>
+    </div>
+</section>

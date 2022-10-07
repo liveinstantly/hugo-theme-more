@@ -1,0 +1,29 @@
+//
+// assets/scss/base/_overlay.scss
+//
+
+.#{$theme-prefix}overlay {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    &--dark::after {
+        background-color: rgba($dark, 0.45);
+    }
+
+    &--light::after {
+        background-color: rgba($light, 0.45);
+    }
+
+    &--inner {
+        position: relative;
+        z-index: 1;
+    }
+}

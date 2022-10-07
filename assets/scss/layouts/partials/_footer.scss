@@ -1,0 +1,17 @@
+//
+// assets/scss/layouts/partials/_footer.scss
+//
+
+// [Template Structure]
+// {{$classPrefix}}footer-container (root)
+//   - {{$classPrefix}}footer
+//     - {{$classPrefix}}footer-company
+//     - {{$classPrefix}}footer-column1
+//     - {{$classPrefix}}footer-column2
+//     - {{$classPrefix}}footer-column3
+//     - {{$classPrefix}}footer-column4
+
+// Styles for Footer background color
+.#{$theme-prefix}footer {
+    background-color: $--bg-footer-color;
+}

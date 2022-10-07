@@ -1,0 +1,5 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+{{- /* Search from 1) data/site.toml, 2) [params.site] in config.toml, 3) default value */ -}}
+{{ $logoEmbedded := $data.site.logoEmbedded | default .Site.Params.site.logoEmbedded | default "icons/logo.svg" }}
+{{ return $logoEmbedded }}

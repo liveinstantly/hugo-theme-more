@@ -1,0 +1,3 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ $menu := $data.menu.footer | default .Site.Menus.footer }}
+{{ return $menu }}

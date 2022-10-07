@@ -1,0 +1,40 @@
+//
+// assets/scss/layouts/partials/_footer-copyright.scss
+//
+
+// [Template Structure]
+// {{$classPrefix}}copyright-footer (root)
+//   - {{$classPrefix}}copyright-footer-container
+//     - {{$classPrefix}}copyright
+//       - {{$classPrefix}}copyright-logo-img
+//     - {{$classPrefix}}copyright-links
+
+// Styles for footer logo size
+.#{$theme-prefix}copyright-footer {
+    .#{$theme-prefix}copyright-footer-container {
+        .#{$theme-prefix}copyright {
+            display: inline-block;
+            vertical-align: middle;
+            .#{$theme-prefix}copyright-logo-img {
+                height: $--navbar-logo-small-size;
+            }
+        }
+    }
+}
+
+// Styles for footer font size
+.#{$theme-prefix}copyright-footer {
+    .#{$theme-prefix}copyright-footer-container {
+        .#{$theme-prefix}copyright {
+            font-size: 0.75rem;
+            color: $light;
+        }
+        .#{$theme-prefix}copyright-links {
+            font-size: 0.75rem;
+            color: $light;
+            button {
+                font-size: 0.75rem;
+            }
+        }
+    }
+}

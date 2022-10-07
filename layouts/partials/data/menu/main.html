@@ -1,0 +1,3 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ $menu := $data.menu.main | default .Site.Menus.main }}
+{{ return $menu }}

@@ -1,0 +1,75 @@
+{{- $classPrefix := partial "_theme.html" -}}
+
+{{ $blockID := printf "%scover-block-%d" $classPrefix .Ordinal }}
+
+{{ $col_id := .Get "color" | default .Ordinal }}
+{{/* Height can be one of: auto, min, med, max, full. */}}
+{{ $height := .Get "height" | default "auto" }}
+
+{{ $link := .Get "link" | default "" }}
+{{ $icon := .Get "icon" | default "" }}
+{{ $image_src_static := .Get "image" | default "" }}
+{{ $image_path := .Get "image" | default "" }}
+{{ $image_anchor := .Get "image_anchor" | default "smart" }}
+{{ $class := .Get "class" | default "" }}
+{{ $column1_pict := .Get "column-pict" | default "col-12 col-md-3" }}
+{{ $column2_desc := .Get "column-desc" | default "col-12 col-md" }}
+{{ $pict_alignment := .Get "pict-alignment" | default "left" }}
+
+{{ with $image_src_static }}
+    {{ $.Scratch.Set "imgSrc" ($image_src_static | relURL) }}
+{{ end }}
+{{ with $image_path }}
+    {{ $image := resources.Get $image_path }}
+    {{ with $image }}
+        {{ $image_small := (.Fill (printf "960x540 %s" $image_anchor)) }}
+        {{ $.Scratch.Set "imgSrc" $image_small }}
+        <link rel="preload" as="image" href="{{ $image_small.RelPermalink }}" />
+    {{ end }}
+{{ end }}
+{{ $rel := .Page.RelPermalink }}
+{{ $link := printf "%s%s" $rel $link }}
+
+<a id="{{ $classPrefix }}block-{{ .Ordinal }}" class="{{ $classPrefix }}offset-anchor"></a>
+
+<section
+    class="row {{ $classPrefix }}box {{ $classPrefix }}box--{{ $col_id }} {{ $classPrefix }}box--gradient {{ $classPrefix }}box--height-{{ $height }}"
+>
+    {{/*  */}}
+    <div class="col-12">
+        <div class="container {{ $classPrefix }}section-container">
+            <div class="row {{ $classPrefix }}content align-items-center justify-content-center">
+                {{- if and (or (not (eq $image_path "")) (not (eq $icon ""))) (eq $pict_alignment "left") }}
+                    <div class="{{ $column1_pict }} img-link p-3 text-center">
+                        {{ if not (eq $icon "") }}
+                            <span><i class="{{ $icon }}"></i></span>
+                        {{ else }}
+                            {{ with $image_path }}
+                                {{ with $link }}<a href="{{ . | relURL }}">{{ end }}
+                                <img src="{{ $.Scratch.Get "imgSrc" }}" class="{{ $classPrefix }}img-fitbox" />
+                                {{ with $link }}</a>{{ end }}
+                            {{ end }}
+                        {{ end }}
+                    </div>
+                {{ end -}}
+                <div class="{{ $column2_desc }}">
+                    {{ .Inner | markdownify }}
+                </div>
+                {{- if and (or (not (eq $image_path "")) (not (eq $icon ""))) (eq $pict_alignment "right") }}
+                    <div class="{{ $column1_pict }} img-link p-3 text-center">
+                        {{ if not (eq $icon "") }}
+                            <span><i class="{{ $icon }}"></i></span>
+                        {{ else }}
+                            {{ with $image_path }}
+                                {{ with $link }}<a href="{{ . | relURL }}">{{ end }}
+                                <img src="{{ $.Scratch.Get "imgSrc" }}" class="{{ $classPrefix }}img-fitbox" />
+                                {{ with $link }}</a>{{ end }}
+                            {{ end }}
+                        {{ end }}
+                    </div>
+                {{ end -}}
+            </div>
+        </div>
+    </div>
+    {{/*  */}}
+</section>

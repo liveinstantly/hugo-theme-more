@@ -1,0 +1,23 @@
+//
+// assets/scss/base/_anchor.scss
+//
+
+.#{$theme-prefix}offset-anchor:target {
+    display: block;
+    position: relative;
+    top: $--anchor-space-top-base;
+    visibility: hidden;
+}
+
+h2[id]::before,
+h3[id]::before,
+h4[id]::before,
+h5[id]::before {
+    display: block;
+    position: relative;
+    content: ' ';
+    margin-top: $--anchor-space-top-base * 1.5;
+    height: $--anchor-height-base * 1.5;
+    visibility: hidden;
+    z-index: -1;
+}

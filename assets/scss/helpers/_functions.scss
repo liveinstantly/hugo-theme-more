@@ -1,0 +1,9 @@
+//
+// assets/scss/helpers/_functions.scss
+//
+
+// Define common functions:
+
+@function prepend($list, $value) {
+    @return join($value, $list);
+}

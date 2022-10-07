@@ -1,0 +1,20 @@
+//
+// assets/scss/base/_border.scss
+//
+
+@mixin border-variant($parent, $color-name, $color-value) {
+}
+
+.#{$theme-prefix}border-top {
+    border: none;
+    border-top: 1px solid $gray-200;
+}
+
+.#{$theme-prefix}border-bottom {
+    border: none;
+    border-top: 1px solid $gray-200;
+}
+
+.#{$theme-prefix}border-none {
+    border: none;
+}

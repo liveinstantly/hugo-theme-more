@@ -1,0 +1,9 @@
+{{ define "main" }}
+    {{- /* This template is an single content page template under every sections */ -}}
+
+    {{ if not hugo.IsProduction }}{{- "<!--[START]=_default/single.html-->" | safeHTML -}}{{ end }}
+    {{- with .Content }}
+        {{ . }}
+    {{ end -}}
+    {{ if not hugo.IsProduction }}{{- "<!--[END]=_default/single.html-->" | safeHTML -}}{{ end }}
+{{ end }}
