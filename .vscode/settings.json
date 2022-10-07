@@ -1,0 +1,15 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.wordWrap": "on",
+    "files.trimTrailingWhitespace": true,
+    // [*.html]
+    "html.format.enable": true,
+    // [*.md]
+    "md.format.enable": true,
+    // [*.css]
+    "css.format.enable": true,
+    "css.lint.emptyRules": "ignore",
+    // [*.scss]
+    "scss.format.enable": true,
+    "scss.lint.emptyRules": "ignore",
+}

@@ -1,0 +1,21 @@
+{
+    "printWidth": 150,
+    "tabWidth": 4,
+    "useTabs": false,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "semi": true,
+    "bracketSpacing": true,
+    "goTemplateBracketSpacing": true,
+    "overrides": [
+        {
+            "files": [
+                "*.html"
+            ],
+            "options": {
+                "singleQuote": true,
+                "parser": "go-template"
+            }
+        }
+    ]
+}
