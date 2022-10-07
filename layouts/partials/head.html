@@ -21,6 +21,8 @@
 {{ template "_internal/schema.html" . }}
 {{ template "_internal/twitter_cards.html" . }}
 
+{{- /* Loading fonts in <head> tag */ -}}
+{{ partialCached "head-webfonts.html" . }}
 
 {{- /* Loading icons in <head> tag */ -}}
 {{ partialCached "head-favicons.html" . }}

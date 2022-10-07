@@ -15,6 +15,9 @@ $enable-google-fonts: false !default;
 $enable-grid-classes: true !default;
 
 // Font definitions
+// Font Awesome
+//$fa-font-path: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/webfonts';
+$fa-font-path: 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/webfonts';
 
 // Google Fonts
 $google-font-name: 'Open Sans' !default;
