@@ -2,6 +2,8 @@
 // assets/scss/layouts/shortcodes/blocks/_cover.scss
 //
 
+// Styles for layouts/shortcodes/blocks/section-cover.html
+
 @include box-height-modifiers('.#{$theme-prefix}cover-block');
 
 .#{$theme-prefix}-cover-logo {
