@@ -37,7 +37,10 @@
 <section
     id="{{ $blockID }}"
     class="row {{ $classPrefix }}cover-block {{ $classPrefix }}box {{ $classPrefix }}box--{{ $col_id }} {{ $classPrefix }}box--gradient {{ $classPrefix }}box--height-{{ $height }} {{ $classPrefix }}overlay {{ $classPrefix }}overlay--dark
-    {{- if .Site.Params.ui.navbarTransparentOverCover }} js-navbar-scroll-cover-content{{ end -}}">
+    {{/* prettier-ignore-start */}}
+    {{- if .Site.Params.ui.navbarTransparentOverCover }} js-navbar-scroll-cover-content{{ end -}}
+    {{/* prettier-ignore-end */}}"
+>
     {{/*  */}}
     <div class="col-12">
         <div class="container {{ $classPrefix }}section-container {{ $classPrefix }}overlay--inner">
@@ -53,7 +56,7 @@
 <div class="{{ $classPrefix }}breadcrumbs-outer sticky-top">
     <div class="row {{ $classPrefix }}box {{ $classPrefix }}box--no-padding ">
         <div class="container-fluid py-1 border-bottom border-top {{ $classPrefix }}breadcrumbs">
-            <div class="container {{$classPrefix}}content">
+            <div class="container {{ $classPrefix }}content">
                 {{ partial "breadcrumb-relpermalink.html" . }}
             </div>
         </div>

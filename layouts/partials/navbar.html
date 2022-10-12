@@ -1,28 +1,37 @@
 {{- $classPrefix := partial "_theme.html" -}}
 
 {{ $cover := and
-    (or (or (.HasShortcode "blocks/section-cover") (.HasShortcode "blocks/section-carousel")) (.Params.navbarTransparentOverCover))
+    (or
+    (or
+    (.HasShortcode "blocks/section-cover")
+    (.HasShortcode "blocks/section-carousel")
+    )
+    (.Params.navbarTransparentOverCover)
+    )
     (.Site.Params.ui.navbarTransparentOverCover)
 -}}
 {{ $currentCtx := . }}
+
+
 <div class="fixed-top">
-    <div class="w-100 {{$classPrefix}}navbar js-navbar-scroll{{ if $cover }} {{$classPrefix}}navbar-cover{{ end }}">
+    <div
+        class="w-100 {{ $classPrefix }}navbar js-navbar-scroll
+        {{/* prettier-ignore-start */}}
+        {{- if $cover }} {{ $classPrefix }}navbar-cover{{ end -}}
+        {{/* prettier-ignore-end */}}"
+    >
         <nav class="navbar navbar-expand-md navbar-dark p-0">
-            <div class="container {{$classPrefix}}navbar-container">
-                <div class="{{$classPrefix}}navbar-header">
+            <div class="container {{ $classPrefix }}navbar-container">
+                <div class="{{ $classPrefix }}navbar-header">
                     <a class="navbar-brand" href="{{ .Site.Home.RelPermalink }}">
-                        <span class="{{$classPrefix}}navbar-logo">
+                        <span class="{{ $classPrefix }}navbar-logo">
                             {{- if .Site.Params.ui.navbarLogo -}}
                                 {{ $logoTitle := partial "data/site/logo-title.html" . }}
                                 {{ $logoImg := partial "data/site/logo-image.html" . }}
                                 {{ $logoEmbedded := partial "data/site/logo-embedded.html" . }}
                                 {{ $logoImgPath := printf "static/%s" $logoImg }}
                                 {{ if (fileExists ($logoImgPath)) -}}
-                                    <img
-                                        class="img-fluid {{$classPrefix}}navbar-logo-img"
-                                        src="{{ $logoImg | relURL }}"
-                                        alt="{{ $logoTitle }}"
-                                    />
+                                    <img class="img-fluid {{ $classPrefix }}navbar-logo-img" src="{{ $logoImg | relURL }}" alt="{{ $logoTitle }}" />
                                 {{ else -}}
                                     {{ with resources.Get $logoEmbedded -}}
                                         {{ ( . | minify).Content | safeHTML -}}
@@ -31,17 +40,16 @@
                             {{ end -}}
                         </span>
                         <span
-                            class="
-                            {{- if not .Site.Params.ui.navbarTitle -}}
-                                sr-only visually-hidden
-                            {{ end -}}
-                            {{$classPrefix}}navbar-logo-title font-weight-bold"
+                            class="{{ $classPrefix }}navbar-logo-title font-weight-bold
+                            {{/* prettier-ignore-start */}}
+                            {{- if not .Site.Params.ui.navbarTitle -}} sr-only visually-hidden{{ end -}}
+                            {{/* prettier-ignore-end */}}"
                         >
                             {{ partial "data/site/logo-title.html" . }}
                         </span>
                     </a>
                 </div>
-                <div class="{{$classPrefix}}navbar-toggle-button d-flex align-items-center">
+                <div class="{{ $classPrefix }}navbar-toggle-button d-flex align-items-center">
                     <button
                         class="navbar-toggler"
                         type="button"
@@ -54,7 +62,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
-                <div class="{{$classPrefix}}navbar-content collapse navbar-collapse ps-4" id="navbarSupportedContent">
+                <div class="{{ $classPrefix }}navbar-content collapse navbar-collapse ps-4" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto ms-auto">
                         {{ with partial "data/menu/main.html" . }}
                             {{ range sort . "Weight" "asc" }}
@@ -83,7 +91,15 @@
                                     </li>
                                 {{ else }}
                                     <li class="nav-item">
-                                        <a class="nav-link text-nowrap{{ if eq $currentCtx.RelPermalink (.URL | relLangURL) }} active{{end}}" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                                        <a
+                                            class="nav-link text-nowrap
+                                            {{/* prettier-ignore-start */}}
+                                            {{- if eq $currentCtx.RelPermalink (.URL | relLangURL) }} active{{ end -}}
+                                            {{/* prettier-ignore-end */}}"
+                                            href="{{ .URL | relLangURL }}"
+                                        >
+                                            {{ .Name }}
+                                        </a>
                                     </li>
                                 {{ end }}
                             {{ end }}

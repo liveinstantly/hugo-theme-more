@@ -8,12 +8,12 @@
     <head>
         {{- partial "head.html" . -}}
     </head>
-    <body class="{{$classPrefix}}{{ .Kind }}">
+    <body class="{{ $classPrefix }}{{ .Kind }}">
         <header id="header-navbar-outer">
             {{- partial "navbar.html" . -}}
         </header>
-        <div id="main-outer" class="{{$classPrefix}}default {{$classPrefix}}outer">
-            <main role="main" class="{{$classPrefix}}main">
+        <div id="main-outer" class="{{ $classPrefix }}default {{ $classPrefix }}outer">
+            <main role="main" class="{{ $classPrefix }}main">
                 {{/* Container for multiple sections */}}
                 <div class="container-fluid">
                     {{- block "main" . -}}{{- end -}}

@@ -37,7 +37,9 @@
 <section
     id="{{ $blockID }}"
     class="row {{ $classPrefix }}cover-block {{ $classPrefix }}cover-block--no-padding {{ $classPrefix }}cover-block--height-{{ $height }}
-    {{ if .Site.Params.ui.navbarTransparentOverCover -}}js-navbar-scroll-cover-content{{end}}"
+    {{/* prettier-ignore-start */}}
+    {{- if .Site.Params.ui.navbarTransparentOverCover }} js-navbar-scroll-cover-content{{ end -}}
+    {{/* prettier-ignore-end */}}"
 >
     <div id="{{ $carouselID }}" class="col-12 carousel slide {{ $classPrefix }}carousel" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -48,11 +50,11 @@
                     type="button"
                     data-bs-target="#{{ $carouselID }}"
                     data-bs-slide-to="{{ $index }}"
-                    {{ if eq ($.Scratch.Get "index") 0 }}
-                        class="active" aria-current="true"
-                    {{end}}
-                    aria-label="{{ .title }}">
-                </button>
+                    {{/* prettier-ignore-start */}}
+                    {{ if eq ($.Scratch.Get "index") 0 }} class="active" aria-current="true" {{ end }}
+                    {{/* prettier-ignore-end */}}
+                    aria-label="{{ .title }}"
+                ></button>
                 {{ $.Scratch.Add "index" 1 }}
             {{ end }}
         </div>
@@ -62,7 +64,10 @@
                 {{ $carouselSlideID := printf "%s-slide-%d" $carouselID ($.Scratch.Get "index") }}
                 <div
                     id="{{ $carouselSlideID }}"
-                    class="col carousel-item {{ $classPrefix }}overlay {{ $classPrefix }}overlay--dark{{- if eq ($.Scratch.Get "index") 0 }} active{{ end -}}"
+                    class="col carousel-item {{ $classPrefix }}overlay {{ $classPrefix }}overlay--dark
+                    {{/* prettier-ignore-start */}}
+                    {{- if eq ($.Scratch.Get "index") 0 }} active{{ end -}}
+                    {{/* prettier-ignore-end */}}"
                 >
                     <div class="container {{ $classPrefix }}carousel-item-container {{ $classPrefix }}overlay--inner">
                         <div class="carousel-caption {{ .text_align }}">
@@ -71,15 +76,13 @@
                             {{ if .button.enable }}
                                 {{ if eq .button.link "" }}
                                     <p>
-                                        <a class="btn btn-lg btn-primary"
-                                            href="javascript:{{ .button.onclick }}();" role="button">
+                                        <a class="btn btn-lg btn-primary" href="javascript:{{ .button.onclick }}();" role="button">
                                             {{ .button.label }}
                                         </a>
                                     </p>
                                 {{ else }}
                                     <p>
-                                        <a class="btn btn-lg btn-primary"
-                                            href="{{ .button.link | relLangURL }}" role="button">
+                                        <a class="btn btn-lg btn-primary" href="{{ .button.link | relLangURL }}" role="button">
                                             {{ .button.label }}
                                         </a>
                                     </p>
@@ -89,7 +92,7 @@
                     </div>
                 </div>
                 {{ $.Scratch.Add "index" 1 }}
-            {{end}}
+            {{ end }}
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#{{ $carouselID }}" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

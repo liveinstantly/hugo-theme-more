@@ -35,11 +35,14 @@
     </style>
 {{ end }}
 
+
 <section
     id="{{ $blockID }}"
-    class="row {{ $classPrefix }}cover-block {{ $classPrefix }}cover-block--height-{{ $height }} {{ if .Site.Params.ui.navbarTransparentOverCover -}}
-        js-navbar-scroll-cover-content
-    {{- end}} {{ $classPrefix }}overlay {{ $classPrefix }}overlay--dark -bg-{{ $col_id }}"
+    class="row {{ $classPrefix }}cover-block {{ $classPrefix }}cover-block--height-{{ $height }}
+    {{ $classPrefix }}overlay {{ $classPrefix }}overlay--dark -bg-{{ $col_id }}
+    {{/* prettier-ignore-start */}}
+    {{- if .Site.Params.ui.navbarTransparentOverCover }} js-navbar-scroll-cover-content{{ end -}}
+    {{/* prettier-ignore-end */}}"
 >
     <div class="col-12 px-0">
         <div class="container {{ $classPrefix }}section-container {{ $classPrefix }}overlay--inner">

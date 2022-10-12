@@ -1,10 +1,13 @@
 {{- with .Parent -}}
-{{- $classPrefix := partial "_theme.html" -}}
-{{- $id := $.Get "id" | default (printf "%sblock-%d" $classPrefix ( add .Ordinal 1 )) -}}
-{{- $color := $.Get "color" | default "blue" -}}
-{{- $label := $.Get "label" | default "label" -}}
+    {{- $classPrefix := partial "_theme.html" -}}
+    {{- $id := $.Get "id" | default (printf "%sblock-%d" $classPrefix ( add .Ordinal 1 )) -}}
+    {{- $color := $.Get "color" | default "blue" -}}
+    {{- $label := $.Get "label" | default "label" -}}
 
-<a class="btn btn-link text-{{ $color }}" href="#{{ $id }}" aria-label="{{ T $label }}"><i class="fa-solid fa-circle-chevron-down" style="font-size: 400%"></i></a>
+
+    <a class="btn btn-link text-{{ $color }}" href="#{{ $id }}" aria-label="{{ T $label }}">
+        <i class="fa-solid fa-circle-chevron-down" style="font-size: 400%"></i>
+    </a>
 {{- else -}}
-{{- errorf "The link-down shortcode is supposed to be nested inside a shortcode" -}}
+    {{- errorf "The link-down shortcode is supposed to be nested inside a shortcode" -}}
 {{- end -}}
