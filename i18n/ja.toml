@@ -1,24 +1,45 @@
-# UI strings. Buttons and similar.
+#
+# ja.toml
+#
 
+# UI strings. Buttons and similar.
 [ui_pager_prev]
 other = "前へ"
-
 [ui_pager_next]
 other = "次へ"
-
 [ui_read_more]
 other = "続きを読む"
-
+[ui_continue_reading]
+other = "続きを読む"
 [ui_search]
 other = "サイトを検索..."
-
 # Used in sentences such as "Posted in News"
 [ui_in]
 other = "in"
-
 # Used in sentences such as "All Tags"
 [ui_all]
 other = "all"
+
+
+# Date format
+[date_format]
+other = "2006年01月02日"
+[date_format_short]
+other = "2006年01月02日"
+[date_format_blog]
+other = "2006年01月02日"
+[date_format_year_month]
+other = "2006年1月"
+[date_format_year]
+other = "2006年"
+[date_format_month]
+other = "1月"
+[date_format_short_woyear]
+other = "1月2日"
+[year_suffix]
+other = "年"
+[month_suffix]
+other = "月"
 
 
 # 404 template
@@ -51,12 +72,19 @@ other = "子ページを作成"
 other = "ドキュメントのissueを作成"
 [post_create_project_issue]
 other = "プロジェクトのissueを作成"
+[post_older]
+other = "古い記事"
+[post_newer]
+other = "新しい記事"
 [post_posts_in]
 other = "記事一覧"
 [post_reading_time]
 other = "minute read"
 [post_less_than_a_minute_read]
 other = "less than a minute"
+[post_written_by]
+other = "著者: "
+
 
 # Print support
 [print_printable_section]
@@ -67,6 +95,7 @@ other = "印刷するには、ここをクリックしてください"
 other = "このページの通常のビューに戻る"
 [print_entire_section]
 other = "セクション全体を印刷"
+
 
 # Community
 [community_join]

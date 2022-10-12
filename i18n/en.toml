@@ -1,24 +1,45 @@
-# UI strings. Buttons and similar.
+#
+# en.toml
+#
 
+# UI strings. Buttons and similar.
 [ui_pager_prev]
 other = "Previous"
-
 [ui_pager_next]
 other = "Next"
-
 [ui_read_more]
 other = "Read more"
-
+[ui_continue_reading]
+other = "Continue Reading"
 [ui_search]
 other = "Search this site…"
-
 # Used in sentences such as "Posted in News"
 [ui_in]
 other = "in"
-
 # Used in sentences such as "All Tags"
 [ui_all]
 other = "all"
+
+
+# Date format
+[date_format]
+other = "Monday, January 2, 2006"
+[date_format_short]
+other = "Jan 2, 2006"
+[date_format_blog]
+other = "Monday, January 2, 2006"
+[date_format_year_month]
+other = "January 2006"
+[date_format_year]
+other = "2006"
+[date_format_month]
+other = "January"
+[date_format_short_woyear]
+other = "Jan 2"
+[year_suffix]
+other = " Year"
+[month_suffix]
+other = " "
 
 
 # 404 template
@@ -53,12 +74,18 @@ other = "Create child page"
 other = "Create documentation issue"
 [post_create_project_issue]
 other = "Create project issue"
+[post_older]
+other = "Older"
+[post_newer]
+other = "Newer"
 [post_posts_in]
 other = "Posts in"
 [post_reading_time]
 other = "minute read"
 [post_less_than_a_minute_read]
 other = "less than a minute"
+[post_written_by]
+other = "By"
 
 # Print support
 [print_printable_section]
