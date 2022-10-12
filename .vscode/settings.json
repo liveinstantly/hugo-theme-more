@@ -4,6 +4,7 @@
     "files.trimTrailingWhitespace": true,
     // [*.html]
     "html.format.enable": true,
+    "html.validate.styles": false,
     // [*.md]
     "md.format.enable": true,
     // [*.css]
