@@ -71,9 +71,9 @@ $yiq-contrasted-threshold: 200 !default;
 //  Border
 $border-color: $gray-300 !default;
 //  Link
-$link-color: darken($primary, 15%) !default;
+$link-color: darken($primary, 10%) !default;
 $link-decoration: none !default;
-$link-hover-color: darken($link-color, 15%) !default;
+$link-hover-color: darken($link-color, 20%) !default;
 $link-hover-decoration: none !default;
 //  Navbar
 $navbar-dark-color: rgba($white, 0.65) !default;
