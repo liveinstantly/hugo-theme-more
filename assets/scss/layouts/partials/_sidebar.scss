@@ -1,0 +1,16 @@
+//
+// assets/scss/layouts/partials/_sidebar.scss
+//
+
+// Styles for layouts/partials/sidebar.html
+
+.#{$theme-prefix}sidebar {
+}
+
+.#{$theme-prefix}sidebar-title {
+    color: $--sidebar-tree-root-color;
+    font-weight: $font-weight-bold;
+    border-bottom: 1px $--sidebar-tree-root-color solid;
+    margin-bottom: $spacer;
+    padding-bottom: $spacer * 0.25;
+}
