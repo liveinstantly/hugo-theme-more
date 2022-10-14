@@ -21,6 +21,17 @@ other = "in"
 other = "all"
 
 
+# Taxonomies
+[category]
+other = "カテゴリ"
+[categories]
+other = "カテゴリ"
+[tag]
+other = "タグ"
+[tags]
+other = "タグ"
+
+
 # Date format
 [date_format]
 other = "2006年01月02日"
@@ -79,9 +90,9 @@ other = "新しい記事"
 [post_posts_in]
 other = "記事一覧"
 [post_reading_time]
-other = "minute read"
+other = "分で読めます(目安)"
 [post_less_than_a_minute_read]
-other = "less than a minute"
+other = "1分以内で読めます(目安)"
 [post_written_by]
 other = "著者: "
 
