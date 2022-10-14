@@ -26,17 +26,30 @@
 @import 'base/padding';
 @import 'base/content';
 @import 'base/content-code';
+@import 'base/tags';
 @import 'base/utils';
 // Layouts/_default
 @import 'layouts/default';
+@import 'layouts/default-taxonomy';
+// Layouts/posts
+@import 'layouts/posts';
 // Template - 'partials'
 @import 'layouts/partials/footer';
 @import 'layouts/partials/footer-copyright';
 @import 'layouts/partials/navbar';
 @import 'layouts/partials/breadcrumbs';
+@import 'layouts/partials/featured-image';
+@import 'layouts/partials/sidebar';
+@import 'layouts/partials/articles/taxonomy';
+@import 'layouts/partials/articles/summary';
+@import 'layouts/partials/articles/toc';
+@import 'layouts/partials/pages/paginator';
+@import 'layouts/partials/pages/section-tree';
+@import 'layouts/partials/taxonomy/site-taxonomy';
 // Template - 'shortcodes'
 @import 'layouts/shortcodes/blocks/carousel';
 @import 'layouts/shortcodes/blocks/cover';
+@import 'layouts/shortcodes/blocks/page-head';
 
 @import 'styles_project';
 // End of Imports
