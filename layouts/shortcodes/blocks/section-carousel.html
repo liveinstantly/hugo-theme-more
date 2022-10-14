@@ -29,8 +29,9 @@
                 background-image: url({{ $carousel_bg_image_large.RelPermalink }});
             }
         }
-        </style> {{ $.Scratch.Add "index" 1 }}
+        </style>
     {{ end }}
+    {{ $.Scratch.Add "index" 1 }}
 {{ end }}
 
 
