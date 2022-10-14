@@ -1,0 +1,20 @@
+//
+// assets/scss/layouts/_default-taxonomy.scss
+//
+
+// Styles for default taxonomy ("layouts/_default") template
+
+// ------------------------------------------------------------------------------------------------
+// taxonomy.html
+// ------------------------------------------------------------------------------------------------
+
+.#{$theme-prefix}taxonomy-page {
+}
+
+.#{$theme-prefix}term-page {
+    .#{$theme-prefix}term-article-list {
+        .#{$theme-prefix}term-article-list-item {
+
+        }
+    }
+}
