@@ -1,0 +1,67 @@
+//
+// assets/scss/layouts/partials/taxonomy/_site-taxonomy.scss
+//
+
+// Styles for layouts/partials/taxonomy/_site-taxonomy.scss
+// Styles for layouts/partials/taxonomy/_site-terms.scss
+
+.site-taxonomy-terms {
+    > .taxonomy-title {
+    }
+    > .taxonomy-terms {
+        @extend .tag-list;
+        display: inline-block;
+        width: 100%;
+        list-style: none;
+        padding: 0;
+        overflow: hidden;
+        li {
+            @extend .small;
+            margin-bottom: 0.2em;
+
+            .taxonomy-term {
+                @extend .tag;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .taxonomy-label {
+                    display: block;
+                }
+                .taxonomy-count {
+                    display: block;
+                    @extend .tag-count;
+                }
+            }
+
+            a.taxonomy-term {
+                @extend .tag-link;
+            }
+        }
+    }
+}
+
+.#{$theme-prefix}sidebar {
+    .site-taxonomy-terms {
+        > .taxonomy-title {
+            @extend .#{$theme-prefix}sidebar-title;
+            > a {
+                color: $--sidebar-tree-root-color;
+                text-decoration: none;
+                &:hover {
+                    color: darken($--sidebar-tree-root-color, 20%);
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+.#{$theme-prefix}taxonomy-term-articles {
+    .#{$theme-prefix}taxonomy-term-article-list {
+        @extend .my-3;
+        .#{$theme-prefix}taxonomy-term-article-list-item {
+            @extend .mb-3;
+        }
+    }
+}

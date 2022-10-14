@@ -1,0 +1,87 @@
+{{- $classPrefix := partial "_theme.html" -}}
+{{ $context := .context }}
+{{ $taxo := .taxo }}
+{{ $mode := .mode | default "link-list" }}
+{{ $showTitle := .showTitle | default true }}
+{{ $title := $taxo | replaceRE "^[^/]*/" "" }}
+{{ $scratch := newScratch }}
+
+{{ if isset $context.Site.Taxonomies (lower $taxo) }}
+    {{ $taxonomy := index $context.Site.Taxonomies (lower $taxo) }}
+    {{ if (gt (len $taxonomy) 0) }}
+        <div class="taxonomy site-taxonomy-terms taxo-{{ urlize $taxo | replaceRE "/" "-" }}">
+            {{ if $showTitle }}
+                <div class="taxonomy-title">
+                    <a href="{{ $taxo | relURL }}">
+                        {{ T ($taxo | replaceRE "^[^/]*/" "") }}
+                    </a>
+                </div>
+            {{ end }}
+            {{ if eq $mode "link-list" }}
+                <ul class="taxonomy-terms">
+                    {{ range $taxonomy }}
+                        <li>
+                            <a class="taxonomy-term" href="{{ .Page.Permalink }}" data-taxonomy-term="{{ urlize .Page.Title }}">
+                                <span class="taxonomy-label">{{ .Page.Title }}</span>
+                                <span class="taxonomy-count">{{ .Count }}</span>
+                            </a>
+                        </li>
+                    {{ end }}
+                </ul>
+            {{ else if eq $mode "nav-tabs" }}
+                <ul class="tab-taxonomy-terms nav nav-tabs" id="{{ urlize $taxo | replaceRE "/" "-" }}-tab" role="tablist">
+                    {{ $scratch.Set "index" 0 }}
+                    {{ range $taxonomy }}
+                        {{ $index := $scratch.Get "index" }}
+                        {{ $active := cond (eq ($scratch.Get "index") 0) " active" "" }}
+                        <li class="nav-item" role="presentation">
+                            <button
+                                class="nav-link{{ $active }}"
+                                id="taxo-tab-{{ $index }}"
+                                data-bs-toggle="tab"
+                                data-bs-target="#taxo-tab-pane-{{ $index }}"
+                                type="button"
+                                role="tab"
+                                aria-controls="taxo-tab-pane-{{ $index }}"
+                                aria-selected="true"
+                            >
+                                <span class="taxonomy-label">{{ .Page.Title }}</span>
+                                <span class="taxonomy-count">({{ .Count }})</span>
+                            </button>
+                        </li>
+                        {{ $scratch.Add "index" 1 }}
+                    {{ end }}
+                </ul>
+                <div class="tab-content border-bottom border-start border-end px-5 py-3" id="{{ urlize $taxo | replaceRE "/" "-" }}-tab-content">
+                    {{ $scratch.Set "index" 0 }}
+                    {{ range $taxonomy }}
+                        {{ $index := $scratch.Get "index" }}
+                        {{ $active := cond (eq ($scratch.Get "index") 0) " show active" "" }}
+                        <div
+                            class="{{ $classPrefix }}taxonomy-term-articles tab-pane fade{{ $active }}"
+                            id="taxo-tab-pane-{{ $index }}"
+                            role="tabpanel"
+                            aria-labelledby="taxo-tab-{{ $index }}"
+                            tabindex="{{ $index }}"
+                        >
+                            {{- if .Page.Pages -}}
+                                {{ $pages := .Page.Pages }}
+                                <ul class="{{ $classPrefix }}taxonomy-term-article-list list-unstyled">
+                                {{ range .Page.Paginator.Pages }}
+                                    <li class="{{ $classPrefix }}taxonomy-term-article-list-item mb-5">
+                                        {{ partial "articles/summary.html" . }}
+                                    </li>
+                                {{ end }}
+                                </ul>
+                            {{ end }}
+                            {{ if .Page.Pages }}
+                                {{ template "_internal/pagination.html" .Page }}
+                            {{ end }}
+                        </div>
+                        {{ $scratch.Add "index" 1 }}
+                    {{ end }}
+                </div>
+            {{ end }}
+        </div>
+    {{ end }}
+{{ end }}

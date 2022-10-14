@@ -1,0 +1,10 @@
+{{ $context := .page }}
+{{ $section := .section | default "posts" }}
+{{ $showTitle := .showTitle | default true }}
+{{ $taxoPrefix := printf "%s%s" $section "/" }}
+
+{{ range $taxo, $taxo_map := $context.Site.Taxonomies }}
+    {{ if eq (len (findRE $taxoPrefix $taxo)) 1 }}
+        {{ partial "taxonomy/site-terms.html" (dict "context" $context "taxo" $taxo "section" $section "showTitle" $showTitle) }}
+    {{ end }}
+{{ end }}
