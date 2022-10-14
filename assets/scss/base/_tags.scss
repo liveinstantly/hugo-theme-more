@@ -1,0 +1,47 @@
+//
+// assets/scss/base/_tags.scss
+//
+
+.tag-list {
+    li {
+        // https://stackoverflow.com/questions/3247358/how-do-i-wrap-text-with-no-whitespace-inside-a-td
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        -ms-word-break: break-all;
+        word-break: break-all;
+        word-break: break-word;
+        -ms-hyphens: auto;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
+}
+
+.tag {
+    text-decoration: none;
+    color: $gray-700;
+    background: $gray-300;
+    margin: 0;
+    padding: 0 0.5em 0 1em;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0.8em 100%, 0 50%, 0.8em 0);
+    clip-path: polygon(100% 0, 100% 100%, 0.8em 100%, 0 50%, 0.8em 0);
+}
+
+.tag-link {
+    &:hover {
+        background-color: $primary;
+        color: $white;
+        .taxonomy-count {
+            color: $dark !important;
+        }
+    }
+}
+
+.tag-count {
+    font-size: 0.8em;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+    margin-left: 0.6em;
+    border-radius: 1em;
+    background-color: $white;
+}
