@@ -2,7 +2,12 @@
 // assets/scss/layouts/_default.scss
 //
 
-// styles for default ("_default") template
+// Styles for default ("layouts/_default") template
+
+// ------------------------------------------------------------------------------------------------
+// baseof.html
+// ------------------------------------------------------------------------------------------------
+
 html,
 body {
     height: 100%;
@@ -49,12 +54,18 @@ body > footer {
     }
 }
 
-//.#{$theme-prefix}main main {
-//    padding-top: $--block-space-top-base * 1.5;
-//    padding-bottom: $--block-space-top-base * 0.5;
-//}
+.#{$theme-prefix}taxonomy {
+    main {
+        section:first-of-type {
+            padding-top: $--block-space-top-base * 1.5;
+        }
+    }
+}
 
-//.#{$theme-prefix}404 main {
-//    padding-top: $--block-space-top-base * 1.5;
-//    padding-bottom: $--block-space-top-base * 0.5;
-//}
+.#{$theme-prefix}term {
+    main {
+        section:first-of-type {
+            padding-top: $--block-space-top-base * 1.5;
+        }
+    }
+}
