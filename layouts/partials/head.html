@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 {{ hugo.Generator }}
 {{ range .AlternativeOutputFormats }}
-    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" />
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" title="{{ $.Site.Title | safeHTML }}" />
 {{ end }}
 {{ $outputFormat := partial "format/outputformat.html" . }}
 {{ if and hugo.IsProduction (ne $outputFormat "print") }}
