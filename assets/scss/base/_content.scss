@@ -40,12 +40,12 @@
         @extend .img-fluid;
     }
 
-    > table {
-        @extend .table-striped;
-
+    > .table-wrapper {
         @extend .table-responsive;
-
-        @extend .table;
+        table {
+            @extend .table;
+            @extend .table-striped;
+        }
     }
 
     > blockquote {
