@@ -1,0 +1,29 @@
+{{ define "main" }}
+    {{- /* This template is a Taxonomy list template */ -}}
+    {{ if not hugo.IsProduction }}{{- "<!--[START]=_default/taxonomy.html-->" | safeHTML -}}{{ end }}
+    {{- $classPrefix := partial "_theme.html" -}}
+
+
+    <div class="container">
+        <section class="{{ $classPrefix }}taxonomy-page">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    {{ partial "breadcrumb-relpermalink.html" . }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <h1>{{ .Title }}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <div class="taxonomy-tabs">
+                        {{ partial "taxonomy/site-terms.html" (dict "context" . "taxo" ( lower .Title ) "showTitle" false "mode" "nav-tabs") }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    {{ if not hugo.IsProduction }}{{- "<!--[END]=_default/taxonomy.html-->" | safeHTML -}}{{ end }}
+{{ end }}

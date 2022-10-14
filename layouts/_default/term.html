@@ -1,0 +1,48 @@
+{{ define "main" }}
+    {{- /* This template is a Taxonomy term template */ -}}
+    {{ if not hugo.IsProduction }}{{- "<!--[START]=_default/term.html-->" | safeHTML -}}{{ end }}
+    {{- $classPrefix := partial "_theme.html" -}}
+
+
+    <div class="container">
+        <section class="{{ $classPrefix }}term-page">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    {{ partial "breadcrumb-relpermalink.html" . }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <h1>
+                        {{ with .Data.Singular }}{{ T . | default . }}:{{ end }}
+                        <span>{{ .Title }}</span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <div class="container">
+                        {{- if .Pages -}}
+                            <ul class="{{ $classPrefix }}term-article-list list-unstyled">
+                            {{ range .Paginator.Pages }}
+                                <li class="{{ $classPrefix }}term-article-list-item mb-5">
+                                    {{ partial "articles/summary.html" . }}
+                                </li>
+                            {{ end }}
+                            </ul>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    {{ partial "pages/paginator.html" . }}
+                </div>
+            </div>
+        </section>
+    </div>
+    {{ if not hugo.IsProduction }}{{- "<!--[END]=_default/term.html-->" | safeHTML -}}{{ end }}
+{{ end }}
