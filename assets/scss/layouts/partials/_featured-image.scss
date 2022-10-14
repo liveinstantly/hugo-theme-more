@@ -1,0 +1,20 @@
+//
+// assets/scss/layouts/partials/_featured-image.scss
+//
+
+// Styles for layouts/partials/featured-image.html
+
+.featured-image {
+    img {
+        display: block;
+    }
+    figcaption {
+        @extend .mt-2;
+        @extend .mt-md-0;
+    }
+}
+
+.featured-image-default {
+    @extend .d-none;
+    @extend .d-md-block;
+}

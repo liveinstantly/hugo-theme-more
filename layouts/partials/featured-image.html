@@ -1,0 +1,44 @@
+{{ $w := .w | default 480 }}
+{{ $h := .h | default 360 }}
+{{ $page := .page }}
+{{ $link := .link | default "" }}
+{{ $class := .class | default "" }}
+
+{{ $image_format := "webp" }}
+{{ $image_anchor := "center" }}
+{{ $featured_image := ($page.Resources.ByType "image").GetMatch "**featured*" }}
+{{ $parent_featured_image := ($page.Parent.Resources.ByType "image").GetMatch "**featured*" }}
+
+{{ $featured := newScratch }}
+{{ $featured.Set "image" $featured_image }}
+{{ $featured.Set "default" false }}
+{{ if not $featured_image }}
+    {{ $featured.Set "image" $parent_featured_image }}
+    {{ $featured.Set "default" true }}
+{{ end }}
+
+{{ with $featured.Get "image" }}
+    {{ $image := .Fill (printf "%dx%d %s %s" $w $h $image_anchor $image_format) }}
+    <figure
+        class="{{ $class }} featured-image
+        {{- /* prettier-ignore-start */}}
+        {{- if $featured.Get "default" }} featured-image-default{{ end -}}
+        {{/* prettier-ignore-end */}}"
+        name="Featured Image for {{ $page.Title }}: {{ $image }}"
+    >
+        {{ if $link }}<a href="{{ $link }}">{{ end }}
+        <img
+            src="{{ $image.RelPermalink }}"
+            class="img-fluid"
+            alt="Featured Image for {{ $page.Title }}"
+            width="{{ $image.Width }}"
+            height="{{ $image.Height }}"
+        />
+        {{ if $link }}</a>{{ end }}
+        {{ with $image.Params.byline }}
+            <figcaption>
+                <div class="text-muted small">{{ . | html }}</div>
+            </figcaption>
+        {{ end }}
+    </figure>
+{{ end }}
