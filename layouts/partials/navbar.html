@@ -66,27 +66,31 @@
                     <ul class="navbar-nav ml-auto ms-auto">
                         {{ with partial "data/menu/main.html" . }}
                             {{ range sort . "Weight" "asc" }}
-                                {{ if .HasChildren }}
+                                {{ $.Scratch.Set "hasChildren" false }}
+                                {{ with .Children }}{{ $.Scratch.Set "hasChildren" true }}{{ end }}
+                                {{ if or .HasChildren ($.Scratch.Get "hasChildren") }}
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link text-nowrap d-inline-block pr-0" href="{{ .URL | relLangURL }}">
-                                            {{ .Name }}
-                                        </a>
-                                        <a
-                                            class="nav-link d-inline-block dropdown-toggle pl-0"
-                                            href="{{ .URL | relLangURL }}"
-                                            id="navbarDropdown"
-                                            role="button"
-                                            data-toggle="dropdown"
-                                            aria-label=">"
-                                            aria-haspopup="true"
-                                            aria-expanded="false"
-                                        >
-                                            <b class="caret"></b>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            {{ range .Children }}
-                                                <a class="dropdown-item" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
-                                            {{ end }}
+                                        <div class="d-inline-flex">
+                                            <a class="nav-link text-nowrap pe-1" href="{{ .URL | relLangURL }}">
+                                                {{ .Name }}
+                                            </a>
+                                            <a
+                                                class="nav-link dropdown-toggle ps-0"
+                                                href="#"
+                                                id="navbarDropdown"
+                                                role="button"
+                                                data-bs-toggle="dropdown"
+                                                aria-label=">"
+                                                aria-haspopup="true"
+                                                aria-expanded="false"
+                                            >
+                                                <b class="caret"></b>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                {{ range .Children }}
+                                                    <a class="dropdown-item" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                                                {{ end }}
+                                            </div>
                                         </div>
                                     </li>
                                 {{ else }}
