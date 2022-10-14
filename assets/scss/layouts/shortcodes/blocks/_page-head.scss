@@ -1,0 +1,15 @@
+//
+// assets/scss/layouts/shortcodes/blocks/_page-head.scss
+//
+
+// Styles for layouts/shortcodes/blocks/section-page-head.html
+
+// Sticky breadcrumbs
+.#{$theme-prefix}page-head-breadcrumbs.sticky-top {
+    top: $--navbar-min-height;
+}
+
+// Color for breadcrumbs in page heading
+.#{$theme-prefix}page-head-breadcrumbs-outer {
+    background-color: $gray-200;
+}
