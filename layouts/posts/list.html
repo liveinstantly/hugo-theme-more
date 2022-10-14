@@ -1,0 +1,39 @@
+{{ define "main" }}
+    {{- $classPrefix := partial "_theme.html" -}}
+
+    {{ if (and .Parent .Parent.IsHome) }}
+        {{ $.Scratch.Set "posts-pages" (where .Site.RegularPages "Section" .Section) }}
+    {{ else }}
+        {{ $.Scratch.Set "posts-pages" .Pages }}
+    {{ end }}
+
+    <div class="row {{ $classPrefix }}posts-list-header">
+        <div class="col-12">
+            {{ partial "breadcrumb.html" . }}
+        </div>
+    </div>
+
+    <div class="row {{ $classPrefix }}posts-list-content">
+        <div class="col-12">
+            {{- if .Pages -}}
+                {{ $paginator := .Paginate (( $.Scratch.Get "posts-pages").GroupByDate "2006" "dsc" ) }}
+                {{ range $paginator.PageGroups }}
+                    <h2>{{ T "post_posts_in" }} {{ .Key }}</h2>
+                    <ul class="list-unstyled {{ $classPrefix }}posts-list">
+                        {{ range .Pages }}
+                            <li class="{{ $classPrefix }}posts-list-item">
+                                {{ .Render "list-item" }}
+                            </li>
+                        {{ end }}
+                    </ul>
+                {{ end }}
+            {{ end }}
+        </div>
+    </div>
+
+    <div class="row {{ $classPrefix }}posts-list-footer">
+        <div class="col-12">
+            {{ partial "pages/paginator.html" . }}
+        </div>
+    </div>
+{{ end }}

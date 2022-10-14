@@ -1,0 +1,38 @@
+{{- $classPrefix := partial "_theme.html" -}}
+{{ $date := .Date.Format "02.01.2006" }}
+{{ $lastmod := .Lastmod.Format "02.01.2006" }}
+
+
+<div class="{{ $classPrefix }}posts-item-content">
+    <h1>{{ .Title }}</h1>
+
+    <header class="{{ $classPrefix }}posts-item-written text-muted mb-4">
+        <div class="float-start">
+            {{ .CurrentSection.LinkTitle }} post
+            {{ partial "articles/authors.html" . }}
+        </div>
+        <div class="text-end">
+            {{ partial "articles/date.html" . }}
+        </div>
+        <div class="float-end">
+            {{ partial "articles/lastmod.html" . }}
+        </div>
+    </header>
+
+    {{ with .Params.description }}<div class="mb-0 lead">{{ . | markdownify }}</div>{{ end }}
+
+
+    <header class="{{ $classPrefix }}posts-item-taxonomy clearfix text-muted">
+        <div class="d-flex flex-column justify-content-end text-end">
+            {{ partial "articles/taxonomy.html" . }}
+            {{ partial "articles/reading-time.html" . }}
+        </div>
+    </header>
+
+    <hr />
+
+    <div class="px-0 {{ $classPrefix }}content">
+        {{ .Content }}
+    </div>
+
+</div>

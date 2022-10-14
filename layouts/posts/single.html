@@ -1,0 +1,29 @@
+{{ define "main" }}
+    {{- $classPrefix := partial "_theme.html" -}}
+
+
+    <div class="row {{ $classPrefix }}posts-single-header">
+        <div class="col-12">
+            {{ partial "breadcrumb.html" . }}
+        </div>
+    </div>
+
+    <div class="row {{ $classPrefix }}posts-single-content">
+        <div class="col-12">
+            {{ $wrappedTable := printf "<div class=\"table-wrapper\"> ${1} </div>" }}
+            {{ .Render "content" | replaceRE "(<table>(?:.|\n)+?</table>)" $wrappedTable | safeHTML }}
+        </div>
+    </div>
+
+    {{ $pagePrev := .PrevInSection }}
+    {{ $pageNext := .NextInSection }}
+
+    <div class="row {{ $classPrefix }}posts-single-footer">
+        <div class="col-12">
+            {{ partial "pages/pager.html" (dict "current" . "prev" $pagePrev "next" $pageNext ) }}
+        </div>
+        <div class="col-12">
+                {{ partial "breadcrumb.html" . }}
+        </div>
+    </div>
+{{ end }}

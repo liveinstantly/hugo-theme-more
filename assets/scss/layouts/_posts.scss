@@ -1,0 +1,166 @@
+//
+// assets/scss/layouts/_blog.scss
+//
+
+// Styles for default ("layouts/posts") template
+
+// ------------------------------------------------------------------------------------------------
+// baseof.html
+// ------------------------------------------------------------------------------------------------
+
+// Block Spacer
+.#{$theme-prefix}posts {
+    padding-top: $--block-space-top-base * 1;
+    padding-bottom: 0;
+}
+.#{$theme-prefix}posts {
+    .#{$theme-prefix}posts-content {
+        @extend .container;
+        @extend .py-4;
+        @extend .px-4;
+    }
+}
+
+// Grid Layout
+.#{$theme-prefix}posts {
+    ##{$theme-prefix}posts-container {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: minmax(0, 1fr);
+
+        @include media-breakpoint-up(lg) {
+            grid-template-rows: 1fr;
+            grid-template-columns: minmax(0, 1fr) 24%;
+        }
+        @include media-breakpoint-up(xxl) {
+            grid-template-rows: 1fr;
+            grid-template-columns: 17% minmax(0, 1fr) 17%;
+        }
+    }
+
+    .#{$theme-prefix}main {
+        order: 1;
+        position: relative;
+    }
+
+    .#{$theme-prefix}sidebar-left {
+        order: 0;
+        position: sticky;
+        vertical-align: top;
+    }
+
+    .#{$theme-prefix}sidebar-right {
+        order: 2;
+        position: sticky;
+        vertical-align: top;
+    }
+}
+
+// Sidebar - Spacer for Sticky bar
+.#{$theme-prefix}posts {
+    .#{$theme-prefix}sidebar-left {
+        top: $--block-space-top-base * 1;
+        max-height: calc(100vh - #{$--block-space-top-base * 1});
+        overflow-y: auto;
+    }
+    .#{$theme-prefix}sidebar-right {
+        top: $--block-space-top-base * 1;
+        max-height: calc(100vh - #{$--block-space-top-base * 1});
+        overflow-y: auto;
+    }
+}
+
+// Sidebar - Spacing & Border colors
+.#{$theme-prefix}posts {
+    .#{$theme-prefix}sidebar-left {
+        padding-top: $spacer * 2;
+        padding-left: $spacer * 1;
+        padding-right: $spacer * 1.5 * 0.5;
+        background-color: $--sidebar-bg-color;
+        border-right: 1px solid $--sidebar-border-color;
+    }
+    .#{$theme-prefix}sidebar-right {
+        padding-top: $spacer * 2;
+        padding-left: $spacer * 1.5 * 0.5;
+        padding-right: $spacer * 1;
+        background-color: $--sidebar-bg-secondary-color;
+        border-left: 1px solid $--sidebar-border-color;
+    }
+}
+
+// RSS icon
+.#{$theme-prefix}posts {
+    .#{$theme-prefix}rss-button {
+        @extend .btn;
+        @extend .btn-lg;
+        @extend .btn-primary;
+
+        position: absolute;
+        top: $spacer;
+        right: $spacer;
+        z-index: 22;
+
+        display: inline-block;
+    }
+}
+
+// Invisible scroll-bar
+.#{$theme-prefix}posts {
+    .#{$theme-prefix}sidebar-right {
+        //-ms-overflow-style: none;
+        //scrollbar-width: none;
+        //&::-webkit-scrollbar {
+        //    display: none;
+        //}
+    }
+}
+
+
+// ------------------------------------------------------------------------------------------------
+// list.html
+// ------------------------------------------------------------------------------------------------
+
+// Block Spacer
+.#{$theme-prefix}posts-list-header {
+    @extend .mb-4;
+}
+.#{$theme-prefix}posts-list-content {
+    .#{$theme-prefix}posts-list {
+        @extend .my-5;
+
+        .#{$theme-prefix}posts-list-item {
+            @extend .mb-5;
+        }
+    }
+}
+.#{$theme-prefix}posts-list-footer {
+}
+
+
+// ------------------------------------------------------------------------------------------------
+// single.html
+// ------------------------------------------------------------------------------------------------
+
+// Block Spacer
+.#{$theme-prefix}posts-single-header {
+    @extend .mb-4;
+}
+.#{$theme-prefix}posts-single-content {
+}
+.#{$theme-prefix}posts-single-footer {
+}
+
+
+// ------------------------------------------------------------------------------------------------
+// list-item.html
+// ------------------------------------------------------------------------------------------------
+
+.#{$theme-prefix}posts-item-written {
+    @extend .mb-1;
+}
+.#{$theme-prefix}posts-item-taxonomy {
+    @extend .mb-1;
+}
+.#{$theme-prefix}posts-item-heading {
+    @extend .mt-1;
+}

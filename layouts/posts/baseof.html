@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+{{- /* This template is a base HTML structure template for every pages */ -}}
+
+{{ if not hugo.IsProduction }}{{- "<!--[START]=blog/baseof.html-->" | safeHTML -}}{{ end }}
+{{- $classPrefix := partial "_theme.html" -}}
+<html itemscope itemtype="http://schema.org/WebPage" lang="{{ .Site.Language.Lang | default "en" }}" class="no-js">
+    <head>
+        {{- partial "head.html" . -}}
+    </head>
+    <body class="{{ $classPrefix }}{{ .Kind }}">
+        <header id="header-navbar-outer">
+            {{- .Scratch.Set "navbar-mode" "fixed-top" -}}
+            {{- partial "navbar.html" . -}}
+        </header>
+        <div id="main-outer" class="{{ $classPrefix }}posts {{ $classPrefix }}outer">
+            <div id="{{ $classPrefix }}posts-container" class="container">
+                <aside class="{{ $classPrefix }}sidebar {{ $classPrefix }}sidebar-left d-none d-xxl-block d-print-none">
+                    {{- partial "sidebar.html" . -}}
+                </aside>
+                <aside class="{{ $classPrefix }}sidebar {{ $classPrefix }}sidebar-right d-none d-lg-block d-print-none">
+                    <div class="container-fluid {{ $classPrefix }}sidebar-right-content">
+                        {{ partial "articles/toc.html" . }}
+                        {{ partial "taxonomy/site-taxonomies.html" (dict "page" .) }}
+                    </div>
+                </aside>
+                <main role="main" class="{{$classPrefix}}main">
+                    <div class="{{ $classPrefix }}posts-content">
+                        {{- with .CurrentSection.OutputFormats.Get "rss" -}}
+                        <a class="{{ $classPrefix }}rss-button" title="RSS" href="{{ .Permalink | safeURL }}" target="_blank" rel="noopener">
+                                <i class="fa-solid fa-rss" aria-hidden="true"></i>
+                        </a>
+                        {{- end -}}
+                        {{- block "main" . -}}{{- end -}}
+                    </div>
+                </main>
+            </div>
+        </div>
+        <footer id="footer-outer">
+            {{- partial "footer.html" . -}}
+        </footer>
+        <footer id="copyright-outer">
+            {{- partial "footer-copyright.html" . -}}
+        </footer>
+        {{- partial "scripts.html" . -}}
+
+        {{- /* Hooks for a simple template customization */ -}}
+        {{- partial "hooks/body-end.html" . -}}
+    </body>
+</html>
+{{ if not hugo.IsProduction }}{{- "<!--[END]=blog/baseof.html-->" | safeHTML -}}{{ end }}
