@@ -1,0 +1,9 @@
+{{- $date := .Date.Format "2006-01-02" -}}
+
+
+<div class="article-date d-inline-block">
+    <time datetime="{{ $date }}">
+        {{- T "post_created" -}}: <i class="fa-regular fa-calendar pe-1"></i>
+        {{- .Date.Format (T "date_format_blog") -}}
+    </time>
+</div>

@@ -1,0 +1,12 @@
+{{- if .Site.Params.ui.readingtime.enable -}}
+<div class="article-reading-time d-inline-block">
+    <span>
+        <i class="fa-solid fa-clock pe-2" aria-hidden="true"></i>
+        {{- if gt .ReadingTime 1 -}}
+            {{- .ReadingTime -}}{{- T "post_reading_time" -}}
+        {{- else -}}
+            {{- T "post_less_than_a_minute_read" -}}
+        {{- end -}}
+    </span>
+</div>
+{{- end -}}

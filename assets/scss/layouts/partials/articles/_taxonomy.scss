@@ -1,0 +1,49 @@
+//
+// assets/scss/layouts/partials/articles/_taxonomy.scss
+//
+
+// Styles for layouts/partials/articles/taxonomy.html
+// Styles for layouts/partials/articles/taxonomy-terms.html
+
+// Block and Spacing
+.article-taxonomy-terms {
+    //@extend .my-1;
+    @extend .ms-2;
+
+    > .taxonomy-title {
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0;
+        margin-right: 0.5em;
+        margin-bottom: 0.2em;
+    }
+    > .taxonomy-terms {
+        @extend .tag-list;
+        list-style: none;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0;
+        padding: 0;
+        //overflow: hidden;
+        li {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            margin-right: 0.5em;
+            margin-bottom: 0.2em;
+
+            .taxonomy-term {
+                @extend .tag;
+                display: inline-block;
+                position: relative;
+            }
+
+            a.taxonomy-term {
+                @extend .tag-link;
+            }
+        }
+        li:last-of-type {
+            margin-right: 0;
+        }
+    }
+}

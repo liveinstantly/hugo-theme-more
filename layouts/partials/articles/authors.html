@@ -1,0 +1,23 @@
+{{ $author := .Params.author }}
+{{ $authors := .Params.authors }}
+
+{{ if and $authors (gt (len $authors) 0) }}
+<div class="article-authors d-inline-block">
+    {{- T "post_byline_by" }}
+    {{ if eq (len $authors) 1 -}}
+    <i class="fa-solid fa-user pe-1"></i>
+    {{- else -}}
+    <i class="fa-solid fa-user-group pe-1"></i>
+    {{- end -}}
+    {{- range $index, $element := $authors }}
+        {{- if not (eq $index 0) }}, {{ end -}}
+        {{- $element | markdownify -}}
+    {{ end -}}
+</div>
+{{ else if $author }}
+<div class="article-authors d-inline-block">
+    {{ with $author }}
+        {{ T "post_byline_by" }} <i class="fa-solid fa-user pe-1"></i>{{ . | markdownify }}
+    {{ end }}
+</div>
+{{ end }}

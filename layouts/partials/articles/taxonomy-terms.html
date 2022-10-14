@@ -1,0 +1,18 @@
+{{- $classPrefix := partial "_theme.html" -}}
+{{ $context := .context }}
+{{ $taxo := .taxo }}
+
+{{ if (gt (len ($context.GetTerms $taxo)) 0) }}
+    <div class="article-taxonomy-terms taxonomy taxo-{{ urlize $taxo | replaceRE "/" "-" }} d-inline-block">
+        <div class="taxonomy-title">{{ T ($taxo | replaceRE "^[^/]*/" "") }}:</div>
+        <ul class="taxonomy-terms">
+            {{ range ($context.GetTerms $taxo) }}
+                <li>
+                    <a class="taxonomy-term" href="{{ .Permalink }}" data-taxonomy-term="{{ urlize .LinkTitle }}">
+                        <span class="taxonomy-label">{{ .LinkTitle }}</span>
+                    </a>
+                </li>
+            {{ end }}
+        </ul>
+    </div>
+{{ end }}

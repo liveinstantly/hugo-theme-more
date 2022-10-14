@@ -1,0 +1,11 @@
+{{ $date := .Date.Format "2006-01-02" }}
+{{ $lastmod := .Lastmod.Format "2006-01-02" }}
+
+{{ if ne $lastmod $date }}
+    <div class="article-lastmod d-inline-block">
+        <time datetime="{{ $lastmod }}">
+            {{- T "post_last_mod" -}}: <i class="fa-regular fa-calendar pe-1"></i>
+            {{- .Lastmod.Format (T "date_format_blog") -}}
+        </time>
+    </div>
+{{ end }}

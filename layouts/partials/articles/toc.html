@@ -1,0 +1,14 @@
+{{- $classPrefix := partial "_theme.html" -}}
+
+{{- if not .Params.notoc -}}
+    {{- with .TableOfContents -}}
+        {{- if ne . `<nav id="TableOfContents"></nav>` -}}
+            <div class="{{ $classPrefix }}toc-container">
+                <div class="{{ $classPrefix }}toc-title">Tabel of Contents</div>
+                <div class="{{ $classPrefix }}toc-content">
+                    {{ . }}
+                </div>
+            </div>
+        {{- end -}}
+    {{- end -}}
+{{- end -}}

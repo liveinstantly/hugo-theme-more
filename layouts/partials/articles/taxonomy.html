@@ -1,0 +1,5 @@
+{{ $context := . }}
+
+{{ range $taxo, $taxo_map := .Site.Taxonomies }}
+    {{ partial "articles/taxonomy-terms.html" (dict "context" $context "taxo" $taxo) }}
+{{ end }}

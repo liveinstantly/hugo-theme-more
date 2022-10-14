@@ -1,0 +1,50 @@
+//
+// assets/scss/layouts/partials/articles/_toc.scss
+//
+
+// Styles for layouts/partials/articles/toc.html
+
+// Styles for TOC header
+.#{$theme-prefix}toc-title {
+    color: $--sidebar-tree-root-color;
+    font-weight: $font-weight-bold;
+    border-bottom: 1px $--sidebar-tree-root-color solid;
+    margin-bottom: $spacer;
+    padding-bottom: $spacer * 0.25;
+}
+
+// Styles for TOC items
+.#{$theme-prefix}toc-content {
+    a {
+        display: block;
+        //font-weight: $font-weight-normal;
+        padding-bottom: $spacer * 0.25;
+    }
+
+    li {
+        list-style: none;
+        display: block;
+    }
+
+    li li {
+        margin-left: $spacer * 0.5;
+    }
+
+    #TableOfContents {
+        // Hugo's ToC is a mouthful, this can be used to style the top level h2 entries.
+        > ul > li > ul > li > a {
+        }
+
+        a {
+            color: $gray-700;
+            &:hover {
+                color: $primary;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    ul {
+        padding-left: 0;
+    }
+}
