@@ -1,0 +1,68 @@
+{{- $classPrefix := partial "_theme.html" -}}
+
+
+<div class="{{ $classPrefix }}article-summary">
+    {{/* Title line for mobile/small screens */}}
+    <div class="row align-items-center d-block d-md-none">
+        <div class="col">
+            <h4 class="mt-0 mb-3"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+        </div>
+    </div>
+
+    {{/* Main for all screens */}}
+    <div class="row align-items-top">
+        <div class="col-md-4">
+            {{ partial "featured-image.html" (dict "page" . "link" .RelPermalink) }}
+        </div>
+        <div class="col-md">
+            <h4 class="mt-0 mb-1 d-none d-md-block"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+
+            <header class="{{ $classPrefix }}article-summary-written clearfix text-muted">
+                <div class="float-start small">
+                    {{ .CurrentSection.LinkTitle }}
+                    {{ partial "articles/authors.html" . }}
+                </div>
+                <div class="text-end small">
+                    {{ partial "articles/date.html" . }}
+                </div>
+                <div class="float-end small">
+                    {{ partial "articles/lastmod.html" . }}
+                </div>
+            </header>
+            <header class="{{ $classPrefix }}article-summary-taxonomy clearfix text-muted">
+                <div class="d-flex flex-column justify-content-end text-end small text-muted">
+                    {{ partial "articles/taxonomy.html" . }}
+                </div>
+            </header>
+            <div class="{{ $classPrefix }}article-summary-heading">
+                {{ if .Page.Params.description }}
+                    <div class="lead">
+                        {{ .Page.Params.description }}
+                    </div>
+                {{ else }}
+                    <div class="lead">
+                        {{ .Plain | safeHTML | truncate 300 }}
+                    </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+
+    {{/* Read link for all screens */}}
+    <div class="row align-items-center mt-1">
+        <div class="{{ $classPrefix }}article-summary-read-link text-end small">
+            <div class="d-inline-block align-middle me-2">
+                {{ partial "articles/reading-time.html" . }}
+            </div>
+            <div class="d-inline-block align-middle">
+                <a
+                    href="{{ .RelPermalink }}"
+                    class="small btn-read-more btn btn-outline-secondary d-inline-block float-end"
+                    aria-label="{{ T "ui_continue_reading" }} - {{ .LinkTitle }}"
+                >
+                    <div class="small">{{ T "ui_continue_reading" }}</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

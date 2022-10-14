@@ -1,0 +1,28 @@
+//
+// assets/scss/layouts/partials/articles/_summary.scss
+//
+
+// Styles for layouts/partials/articles/summary.html
+
+.#{$theme-prefix}article-summary {
+    .#{$theme-prefix}article-summary-written {
+        @extend .mb-1;
+    }
+    .#{$theme-prefix}article-summary-taxonomy {
+        @extend .mb-1;
+    }
+    .#{$theme-prefix}article-summary-heading {
+        @extend .mt-1;
+    }
+    .#{$theme-prefix}article-summary-read-link {
+    }
+}
+
+.btn-read-more {
+    @extend .btn;
+    @extend .btn-outline-secondary;
+    border-radius: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-transform: uppercase;
+}
