@@ -1,0 +1,53 @@
+//
+// assets/scss/layouts/partials/pages/_paginator.scss
+//
+
+// Styles for layouts/partials/pages/paginator.html
+
+// Spacing
+.#{$theme-prefix}paginator {
+    position: relative;
+    padding-top: $spacer * 1.5;
+    margin-top: $spacer * 1.5;
+    margin-bottom: $spacer * 3; // TO BE FIXED: Temporary margining
+    border-top: solid 1px $gray-400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+}
+
+// Layout
+.#{$theme-prefix}paginator {
+    li.previous {
+        display: inline;
+        float: left;
+    }
+    li.next {
+        display: inline;
+        float: right;
+    }
+}
+
+// Button Colors
+.#{$theme-prefix}paginator {
+    li > a {
+        @extend .btn;
+        @extend .btn-outline-primary;
+        border-radius: 0;
+        &:hover,
+        &:focus {
+        }
+    }
+
+    li.disabled > span {
+        @extend .btn;
+        border-radius: 0;
+        color: $gray-400;
+        border-color: $gray-400;
+        &:hover,
+        &:focus {
+            color: $gray-400 !important;
+            border-color: $gray-400 !important;
+        }
+    }
+}

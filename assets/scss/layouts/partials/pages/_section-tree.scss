@@ -1,0 +1,72 @@
+//
+// assets/scss/layouts/partials/pages/_section-tree.scss
+//
+
+// Styles for layouts/partials/pages/section-tree.html
+
+// Spacing
+.#{$theme-prefix}section-tree {
+    .#{$theme-prefix}section-list {
+        padding: 0;
+        margin: 0;
+
+        .#{$theme-prefix}section-title {
+            list-style: none;
+            display: block;
+
+            .#{$theme-prefix}section-link {
+                display: block;
+                padding-bottom: $spacer * 0.25;
+            }
+        }
+    }
+
+    @include media-breakpoint-up(md) {
+        .#{$theme-prefix}section-list.ul-1 .#{$theme-prefix}section-list {
+            padding-left: $spacer * 1.5;
+        }
+    }
+}
+
+// Styles for Fonts Weights
+.#{$theme-prefix}section-tree {
+    .#{$theme-prefix}section-title {
+        .with-child {
+            font-weight: $font-weight-medium;
+        }
+        .active {
+            font-weight: $font-weight-bold;
+        }
+    }
+}
+
+// Styles for Font Colors
+.#{$theme-prefix}section-tree {
+    .#{$theme-prefix}section-title {
+        .#{$theme-prefix}section-link {
+            color: $gray-700;
+            &:hover {
+                color: $gray-900;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+// Styles for Tree Root
+.#{$theme-prefix}section-tree {
+    .#{$theme-prefix}section-list {
+        .#{$theme-prefix}section-title {
+            .tree-root {
+                color: $--sidebar-tree-root-color;
+                font-weight: $font-weight-bold;
+                border-bottom: 1px $--sidebar-tree-root-color solid;
+                margin-bottom: $spacer;
+                &:hover {
+                    color: darken($--sidebar-tree-root-color, 20%);
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

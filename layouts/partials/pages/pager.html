@@ -1,0 +1,32 @@
+{{- $classPrefix := partial "_theme.html" -}}
+{{- $current := .current -}}
+{{- $older := .prev -}}
+{{- $newer := .next -}}
+
+
+<ul class="list-unstyled {{ $classPrefix }}paginator">
+    {{ if $newer }}
+        <li class="previous">
+            <a href="{{ $newer.RelPermalink | relURL }}" aria-label="{{ T "ui_pager_prev" }} - {{$newer.Title}}">
+                <i class="fa-solid fa-caret-left fa-lg"></i> {{ T "post_newer" }}
+            </a>
+        </li>
+    {{ else }}
+        <li class="previous disabled">
+            <span>
+                <i class="fa-solid fa-caret-left fa-lg"></i> {{ T "post_newer" }}
+            </span>
+        </li>
+    {{ end }}
+    {{ if $older }}
+        <li class="next">
+            <a href="{{ $older.RelPermalink | relURL }}" aria-label="{{ T "ui_pager_prev" }} - {{$older.Title}}">
+                {{ T "post_older" }} <i class="fa-solid fa-caret-right fa-lg"></i>
+            </a>
+        </li>
+    {{ else }}
+        <li class="next disabled">
+            <span> {{ T "post_older" }} <i class="fa-solid fa-caret-right fa-lg"></i> </span>
+        </li>
+    {{ end }}
+</ul>

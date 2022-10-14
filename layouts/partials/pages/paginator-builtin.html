@@ -1,0 +1,8 @@
+{{- $classPrefix := partial "_theme.html" -}}
+
+
+<ul class="list-unstyled {{ $classPrefix }}paginator">
+    {{ if .Pages }}
+        {{ template "_internal/pagination.html" . }}
+    {{ end }}
+</ul>

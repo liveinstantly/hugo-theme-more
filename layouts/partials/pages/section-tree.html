@@ -1,0 +1,55 @@
+{{- $classPrefix := partial "_theme.html" -}}
+
+{{- $sectionRoot := .FirstSection -}}
+{{- $sectionLevel := 0 -}}
+{{- $sections := .Sections -}}
+{{- $pages := .Pages -}}
+
+
+<nav class="{{ $classPrefix }}section-tree" style="width: 100%;">
+    <ul class="{{ $classPrefix }}section-list ul-{{ $sectionLevel }}">
+        {{ template "section-tree" (dict "current" . "sectionRoot" $sectionRoot "sectionLevel" $sectionLevel) }}
+    </ul>
+</nav>
+
+{{- define "section-tree" -}}
+    {{- $classPrefix := partial "_theme.html" -}}
+    {{- $current := .current -}}
+    {{- $root := .sectionRoot -}}
+    {{- $sections := $root.Sections -}}
+    {{- $pages := $root.Pages -}}
+    {{- $sectionLevel := .sectionLevel -}}
+    {{- $treeRoot := cond (eq .sectionLevel 0) true false -}}
+    {{- $maxItems := cond (isset .Site.Params.ui.sectiontree "maxDisplay") .Site.Params.ui.sectiontree.maxDisplay 50 -}}
+    {{- $items := where (union $pages $sections).ByWeight ".Params.toc_hide" "!=" true | first $maxItems -}}
+
+    {{- $link := $root.RelPermalink -}}
+    {{- $title := $root.Title -}}
+
+    {{- $withChild := gt (len $items) 0 -}}
+
+
+    <li class="{{ $classPrefix }}section-title">
+        {{- if or $withChild (not (eq $sectionLevel 1)) }}
+            <a
+                href="{{ $link }}"
+                title="{{ $title }}"
+                class="align-left text-wrap {{ $classPrefix }}section-link
+                {{/* prettier-ignore-start */}}
+                {{- if $withChild }} with-child{{ end -}}
+                {{- if $treeRoot }} tree-root{{ end -}}
+                {{/* prettier-ignore-end */}}"
+            >
+                <span>{{ $root.LinkTitle }}</span>
+            </a>
+        {{ end -}}
+        {{- if $withChild }}
+            {{ $sectionLevel := add $sectionLevel 1 }}
+            <ul class="{{ $classPrefix }}section-list ul-{{ $sectionLevel }}">
+                {{ range $items }}
+                    {{ template "section-tree" (dict "current" $current "sectionRoot" . "sectionLevel" $sectionLevel) }}
+                {{ end }}
+            </ul>
+        {{ end -}}
+    </li>
+{{- end -}}
