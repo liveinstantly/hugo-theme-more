@@ -20,7 +20,7 @@
     {{- $pages := $root.Pages -}}
     {{- $sectionLevel := .sectionLevel -}}
     {{- $treeRoot := cond (eq .sectionLevel 0) true false -}}
-    {{- $maxItems := cond (isset .Site.Params.ui.sectiontree "maxDisplay") .Site.Params.ui.sectiontree.maxDisplay 50 -}}
+    {{- $maxItems := 50 }}
     {{- $items := where (union $pages $sections).ByWeight ".Params.toc_hide" "!=" true | first $maxItems -}}
 
     {{- $link := $root.RelPermalink -}}
