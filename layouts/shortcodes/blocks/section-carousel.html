@@ -22,11 +22,11 @@
         <link rel="preload" as="image" href="{{ $carousel_bg_image_small.RelPermalink }}" media="(max-width: 960px)" />
         <style>
         #{{ $carouselSlideID }} {
-            background-image: url({{ $carousel_bg_image_small.RelPermalink }});
+            background-image: url({{ $carousel_bg_image_small.Permalink }});
         }
         @media only screen and (min-width: 960px) {
             #{{ $carouselSlideID }} {
-                background-image: url({{ $carousel_bg_image_large.RelPermalink }});
+                background-image: url({{ $carousel_bg_image_large.Permalink }});
             }
         }
         </style>

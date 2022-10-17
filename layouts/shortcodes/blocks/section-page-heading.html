@@ -22,11 +22,11 @@
     <link rel="preload" as="image" href="{{ $page_header_image_large.RelPermalink }}" media="(min-width: 960px)" />
     <style>
     #{{ $blockID }} {
-        background-image: url({{ $page_header_image_small.RelPermalink }});
+        background-image: url({{ $page_header_image_small.Permalink }});
     }
     @media only screen and (min-width: 960px) {
         #{{ $blockID }} {
-            background-image: url({{ $page_header_image_large.RelPermalink }});
+            background-image: url({{ $page_header_image_large.Permalink }});
         }
     }
     </style>

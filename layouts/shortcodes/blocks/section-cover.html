@@ -19,14 +19,14 @@
     <link rel="preload" as="image" href="{{ $background_image_big.RelPermalink }}" media="(min-width: 960px)" />
     <style>
     #{{ $blockID }} {
-        background-image: url({{ $background_image_small.RelPermalink }});
+        background-image: url({{ $background_image_small.Permalink }});
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
     }
     @media only screen and (min-width: 960px) {
         #{{ $blockID }} {
-            background-image: url({{ $background_image_big.RelPermalink }});
+            background-image: url({{ $background_image_big.Permalink }});
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
