@@ -102,6 +102,10 @@
                     .#{$theme-prefix}navbar-logo-img {
                         height: $--navbar-logo-size;
                     }
+                    > svg {
+                        display: inline-block;
+                        height: $--navbar-logo-size;
+                    }
                 }
                 .#{$theme-prefix}navbar-logo-title {
                     display: inline-block;

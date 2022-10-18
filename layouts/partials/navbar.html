@@ -26,16 +26,13 @@
                     <a class="navbar-brand" href="{{ .Site.Home.RelPermalink }}">
                         <span class="{{ $classPrefix }}navbar-logo">
                             {{- if .Site.Params.ui.navbarLogo -}}
-                                {{ $logoTitle := partial "data/site/logo-title.html" . }}
-                                {{ $logoImg := partial "data/site/logo-image.html" . }}
                                 {{ $logoEmbedded := partial "data/site/logo-embedded.html" . }}
-                                {{ $logoImgPath := printf "static/%s" $logoImg }}
-                                {{ if (fileExists ($logoImgPath)) -}}
+                                {{ with resources.Get $logoEmbedded -}}
+                                    {{ ( . | minify).Content | safeHTML -}}
+                                {{ else }}
+                                    {{ $logoTitle := partial "data/site/logo-title.html" . }}
+                                    {{ $logoImg := partial "data/site/logo-image.html" . }}
                                     <img class="img-fluid {{ $classPrefix }}navbar-logo-img" src="{{ $logoImg | relURL }}" alt="{{ $logoTitle }}" />
-                                {{ else -}}
-                                    {{ with resources.Get $logoEmbedded -}}
-                                        {{ ( . | minify).Content | safeHTML -}}
-                                    {{ end -}}
                                 {{ end -}}
                             {{ end -}}
                         </span>

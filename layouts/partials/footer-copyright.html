@@ -7,16 +7,18 @@
             <div class="col-12 col-lg text-lg-start text-center">
                 <div class="{{$classPrefix}}copyright">
                     {{- if .Site.Params.ui.navbarLogo -}}
-                        {{ $logoTitle := partial "data/site/logo-title.html" . }}
-                        {{ $logoImg := partial "data/site/logo-image.html" . }}
-                        {{ $logoImgPath := printf "static/%s" $logoImg }}
-                        {{ if (fileExists ($logoImgPath)) -}}
+                        {{ $logoEmbedded := partial "data/site/logo-embedded.html" . }}
+                        {{ with resources.Get $logoEmbedded -}}
+                            {{ ( . | minify).Content | safeHTML -}}
+                        {{ else }}
+                            {{ $logoTitle := partial "data/site/logo-title.html" . }}
+                            {{ $logoImg := partial "data/site/logo-image.html" . }}
                             <img
                                 class="{{$classPrefix}}copyright-logo-img"
                                 src="{{ $logoImg | relURL }}"
                                 alt="{{ $logoTitle }}"
                             />
-                        {{ end -}}
+                        {{ end }}
                     {{ end -}}
                     <span>{{ partial "data/site/copyright.html" . | safeHTML }}</span>
                 </div>
