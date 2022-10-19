@@ -94,6 +94,8 @@ other = "古い記事"
 other = "新しい記事"
 [post_posts_in]
 other = "記事一覧"
+[post_posts_in_year]
+other = "{{ . }} 年の記事一覧"
 [post_reading_time]
 other = "分で読めます(目安)"
 [post_less_than_a_minute_read]

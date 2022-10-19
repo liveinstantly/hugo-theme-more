@@ -20,7 +20,7 @@
                 {{ if not (eq (len $sortedPages) 0) }}
                     {{ $paginator := .Paginate $sortedPages }}
                     {{ range $paginator.PageGroups }}
-                        <h2>{{ T "post_posts_in" }} {{ .Key }}</h2>
+                        <h2>{{ T "post_posts_in_year" .Key }}</h2>
                         <ul class="list-unstyled {{ $classPrefix }}posts-list">
                             {{ range .Pages }}
                                 <li class="{{ $classPrefix }}posts-list-item">
