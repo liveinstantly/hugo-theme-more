@@ -8,15 +8,15 @@
 
 {{ if isset $context.Site.Taxonomies (lower $taxo) }}
     {{ $taxonomy := index $context.Site.Taxonomies (lower $taxo) }}
-    {{ if (gt (len $taxonomy) 0) }}
-        <div class="taxonomy site-taxonomy-terms taxo-{{ urlize $taxo | replaceRE "/" "-" }}">
-            {{ if $showTitle }}
-                <div class="taxonomy-title">
-                    <a href="{{ $taxo | relURL }}">
-                        {{ T ($taxo | replaceRE "^[^/]*/" "") }}
-                    </a>
-                </div>
-            {{ end }}
+    <div class="taxonomy site-taxonomy-terms taxo-{{ urlize $taxo | replaceRE "/" "-" }}">
+        {{ if $showTitle }}
+            <div class="taxonomy-title">
+                <a href="{{ $taxo | relURL }}">
+                    {{ T $title }}
+                </a>
+            </div>
+        {{ end }}
+        {{ if (gt (len $taxonomy) 0) }}
             {{ if eq $mode "link-list" }}
                 <ul class="taxonomy-terms">
                     {{ range $taxonomy }}
@@ -82,6 +82,8 @@
                     {{ end }}
                 </div>
             {{ end }}
-        </div>
-    {{ end }}
+        {{ else }}
+            <div class="taxonomy-terms">{{ T "taxonomy_no_term" }}</div>
+        {{ end }}
+    </div>
 {{ end }}

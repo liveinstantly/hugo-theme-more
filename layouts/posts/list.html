@@ -16,17 +16,26 @@
     <div class="row {{ $classPrefix }}posts-list-content">
         <div class="col-12">
             {{- if .Pages -}}
-                {{ $paginator := .Paginate (( $.Scratch.Get "posts-pages").GroupByDate "2006" "dsc" ) }}
-                {{ range $paginator.PageGroups }}
-                    <h2>{{ T "post_posts_in" }} {{ .Key }}</h2>
-                    <ul class="list-unstyled {{ $classPrefix }}posts-list">
-                        {{ range .Pages }}
-                            <li class="{{ $classPrefix }}posts-list-item">
-                                {{ .Render "list-item" }}
-                            </li>
-                        {{ end }}
-                    </ul>
+                {{ $sortedPages := ( $.Scratch.Get "posts-pages").GroupByDate "2006" "dsc" }}
+                {{ if not (eq (len $sortedPages) 0) }}
+                    {{ $paginator := .Paginate $sortedPages }}
+                    {{ range $paginator.PageGroups }}
+                        <h2>{{ T "post_posts_in" }} {{ .Key }}</h2>
+                        <ul class="list-unstyled {{ $classPrefix }}posts-list">
+                            {{ range .Pages }}
+                                <li class="{{ $classPrefix }}posts-list-item">
+                                    {{ .Render "list-item" }}
+                                </li>
+                            {{ end }}
+                        </ul>
+                    {{ end }}
+                {{ else }}
+                    {{ T "post_no_pages" }}
                 {{ end }}
+            {{ else }}
+                <div>
+                    {{ T "post_no_pages" }}
+                </div>
             {{ end }}
         </div>
     </div>

@@ -22,6 +22,8 @@ other = "all"
 
 
 # Taxonomies
+[taxnomies]
+other = "記事の分類"
 [category]
 other = "カテゴリ"
 [categories]
@@ -30,6 +32,8 @@ other = "カテゴリ"
 other = "タグ"
 [tags]
 other = "タグ"
+[taxonomy_no_term]
+other = "この分類のキーはありません"
 
 
 # Date format
@@ -63,7 +67,6 @@ other = "申し訳ございません！<br />URL で指定されたページが�
 # Footer text
 [footer_all_rights_reserved]
 other = "All Rights Reserved"
-
 [footer_privacy_policy]
 other = "プライバシーポリシー"
 
@@ -77,6 +80,8 @@ other = "作成"
 other = "最終更新"
 [post_edit_this]
 other = "ページの編集"
+[post_view_this]
+other = "ページのソースを表示"
 [post_create_child_page]
 other = "子ページを作成"
 [post_create_issue]
@@ -95,6 +100,8 @@ other = "分で読めます(目安)"
 other = "1分以内で読めます(目安)"
 [post_written_by]
 other = "著者: "
+[post_no_pages]
+other = "表示するページがありません"
 
 
 # Print support
@@ -106,22 +113,3 @@ other = "印刷するには、ここをクリックしてください"
 other = "このページの通常のビューに戻る"
 [print_entire_section]
 other = "セクション全体を印刷"
-
-
-# Community
-[community_join]
-other = "Join the {{ .Site.Title }} community"
-[community_introduce]
-other = "{{ .Site.Title }} is an open source project that anyone in the community can use, improve, and enjoy. We'd love you to join us! Here's a few ways to find out what's happening and get involved."
-[community_learn]
-other = "Learn and Connect"
-[community_using]
-other = "Using or want to use {{ .Site.Title }}? Find out more here:"
-[community_develop]
-other = "Develop and Contribute"
-[community_contribute]
-other = "If you want to get more involved by contributing to {{ .Site.Title }}, join us here:"
-[community_how_to]
-other = "You can find out how to contribute to {{ .Site.Title }} in our"
-[community_guideline]
-other = "Contribution Guidelines"

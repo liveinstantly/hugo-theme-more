@@ -1,10 +1,15 @@
 {{ $context := .page }}
-{{ $section := .section | default "posts" }}
+{{ $section := .section | default $context.Section | default "posts" }}
 {{ $showTitle := .showTitle | default true }}
 {{ $taxoPrefix := printf "%s%s" $section "/" }}
 
-{{ range $taxo, $taxo_map := $context.Site.Taxonomies }}
-    {{ if eq (len (findRE $taxoPrefix $taxo)) 1 }}
-        {{ partial "taxonomy/site-terms.html" (dict "context" $context "taxo" $taxo "section" $section "showTitle" $showTitle) }}
+<div class="taxonomy site-taxonomy">
+    <div class="taxonomy site-taxonomy-terms-title">
+        <div>{{ T "taxnomies" }}</div>
+    </div>
+    {{ range $taxo, $taxo_map := $context.Site.Taxonomies }}
+        {{ if eq (len (findRE $taxoPrefix $taxo)) 1 }}
+            {{ partial "taxonomy/site-terms.html" (dict "context" $context "taxo" $taxo "section" $section "showTitle" $showTitle) }}
+        {{ end }}
     {{ end }}
-{{ end }}
+</div>

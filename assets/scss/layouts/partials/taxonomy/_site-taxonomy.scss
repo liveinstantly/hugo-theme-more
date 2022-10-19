@@ -42,9 +42,17 @@
 }
 
 .#{$theme-prefix}sidebar {
+    .site-taxonomy-terms-title {
+        @extend .#{$theme-prefix}sidebar-title;
+    }
+}
+
+.#{$theme-prefix}sidebar {
     .site-taxonomy-terms {
         > .taxonomy-title {
             @extend .#{$theme-prefix}sidebar-title;
+            border-bottom: 0;
+            margin-bottom: $spacer * 0.5;
             > a {
                 color: $--sidebar-tree-root-color;
                 text-decoration: none;
@@ -53,6 +61,9 @@
                     text-decoration: none;
                 }
             }
+        }
+        > .taxonomy-terms {
+            margin-bottom: $spacer;
         }
     }
 }
