@@ -30,7 +30,7 @@
 
 
     <li class="{{ $classPrefix }}section-title">
-        {{- if or $withChild (not (gt $sectionLevel 1)) }}
+        {{- if or $withChild (gt $sectionLevel 1) }}
             <a
                 href="{{ $link }}"
                 title="{{ $title }}"
