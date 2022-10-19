@@ -13,6 +13,10 @@
     }
     .#{$theme-prefix}article-summary-heading {
         @extend .mt-1;
+        .article-lead {
+            margin-bottom: $spacer * 0.5;
+            font-size: $font-size-base * 0.95;
+        }
     }
     .#{$theme-prefix}article-summary-read-link {
     }

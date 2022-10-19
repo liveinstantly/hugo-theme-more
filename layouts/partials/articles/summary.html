@@ -36,11 +36,11 @@
             </header>
             <div class="{{ $classPrefix }}article-summary-heading">
                 {{ if .Page.Params.description }}
-                    <div class="lead">
+                    <div class="article-lead">
                         {{ .Page.Params.description }}
                     </div>
                 {{ else }}
-                    <div class="lead">
+                    <div class="article-lead">
                         {{ .Plain | safeHTML | truncate 300 }}
                     </div>
                 {{ end }}

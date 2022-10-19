@@ -19,8 +19,9 @@
         </div>
     </header>
 
-    {{ with .Params.description }}<div class="mb-0 lead">{{ . | markdownify }}</div>{{ end }}
-
+    {{ with .Params.description }}
+        <div class="article-lead">{{ . | markdownify }}</div>
+    {{ end }}
 
     <header class="{{ $classPrefix }}posts-item-taxonomy clearfix text-muted">
         <div class="d-flex flex-column justify-content-end text-end">
