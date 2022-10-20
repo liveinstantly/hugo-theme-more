@@ -6,31 +6,41 @@
 <div class="{{ $classPrefix }}posts-item-content">
     <h1>{{ .Title }}</h1>
 
-    <header class="{{ $classPrefix }}posts-item-written text-muted mb-4">
-        <div class="float-start">
-            {{ .CurrentSection.LinkTitle }} post
-            {{ partial "articles/authors.html" . }}
-        </div>
-        <div class="text-end">
-            {{ partial "articles/date.html" . }}
-        </div>
-        <div class="float-end">
-            {{ partial "articles/lastmod.html" . }}
+    <header class="{{ $classPrefix }}posts-item-written clearfix text-muted mb-3">
+        <div class="row">
+            <div class="col-md-6">
+                {{ .CurrentSection.LinkTitle }} post
+                {{ partial "articles/authors.html" . }}
+            </div>
+            <div class="col-md-6 text-end">
+                <div>{{ partial "articles/date.html" . }}</div>
+                <div>{{ partial "articles/lastmod.html" . }}</div>
+            </div>
         </div>
     </header>
 
     {{ with .Params.description }}
-        <div class="article-lead">{{ . | markdownify }}</div>
+        {{ $showDescription := $.Param "showDescription" | default false }}
+        {{ if $showDescription }}
+            <div class="article-lead">{{ . | markdownify }}</div>
+        {{ end }}
     {{ end }}
 
-    <header class="{{ $classPrefix }}posts-item-taxonomy clearfix text-muted">
-        <div class="d-flex flex-column justify-content-end text-end">
-            {{ partial "articles/taxonomy.html" . }}
-            {{ partial "articles/reading-time.html" . }}
+    <header class="{{ $classPrefix }}posts-item-taxonomy clearfix text-muted mb-2">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="addthis_inline_share_toolbox"></div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex flex-column justify-content-end text-end">
+                    {{ partial "articles/taxonomy.html" . }}
+                    {{ partial "articles/reading-time.html" . }}
+                </div>
+            </div>
         </div>
     </header>
 
-    <hr />
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6351132193e21d80"></script>
 
     <div class="px-0 {{ $classPrefix }}content">
         {{ .Content }}

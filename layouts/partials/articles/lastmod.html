@@ -4,8 +4,8 @@
 {{ if ne $lastmod $date }}
     <div class="article-lastmod d-inline-block">
         <time datetime="{{ $lastmod }}">
-            {{- T "post_last_mod" -}}: <i class="fa-regular fa-calendar pe-1"></i>
-            {{- .Lastmod.Format (T "date_format_blog") -}}
+            <i class="fa-regular fa-calendar pe-1"></i>{{- T "post_last_mod" -}}:
+            <span>{{- .Lastmod.Format (T "date_format_blog") -}}</span>
         </time>
     </div>
 {{ end }}
