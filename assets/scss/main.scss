@@ -11,6 +11,7 @@
 // Bootstrap v5.x
 @import '../vendors/bootstrap/scss/bootstrap';
 // Font-Awesome v6.x: Classic (Solid, Regular (partially)) and Brands Fonts
+$fa-font-display: swap;
 @import '../vendors/Font-Awesome/scss/fontawesome.scss';
 @import '../vendors/Font-Awesome/scss/solid.scss';
 @import '../vendors/Font-Awesome/scss/regular.scss';
