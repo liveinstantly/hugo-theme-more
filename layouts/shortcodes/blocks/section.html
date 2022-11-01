@@ -16,15 +16,17 @@
     <div class="col-12">
         <div class="container {{ $classPrefix }}section-container {{ $type }}">
             <div class="{{ $classPrefix }}content">
+                {{ $wrappedTable := printf "<div class=\"table-wrapper\"> ${1} </div>" }}
+
                 {{ if eq $innerType "html" }}
-                    {{ .Inner | htmlUnescape | safeHTML }}
+                    {{ .Inner | htmlUnescape | replaceRE "(<table>(?:.|\n)+?</table>)" $wrappedTable | safeHTML }}
                 {{ else if eq $innerType "md" }}
-                    {{ .Inner | markdownify }}
+                    {{ .Inner | markdownify | replaceRE "(<table>(?:.|\n)+?</table>)" $wrappedTable | safeHTML }}
                 {{ else }}
                     {{ if eq .Page.File.Ext "md" }}
-                        {{ .Inner | markdownify }}
+                        {{ .Inner | markdownify | replaceRE "(<table>(?:.|\n)+?</table>)" $wrappedTable | safeHTML }}
                     {{ else }}
-                        {{ .Inner | htmlUnescape | safeHTML }}
+                        {{ .Inner | htmlUnescape | replaceRE "(<table>(?:.|\n)+?</table>)" $wrappedTable | safeHTML }}
                     {{ end }}
                 {{ end }}
             </div>
