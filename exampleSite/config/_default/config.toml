@@ -46,12 +46,11 @@ enableMissingTranslationPlaceholders = true
         languageName = "English"
         languageCode = "en"
         contentDir = "content/en"
-        time_format_blog = "Monday, Jan 2, 2006"
     [languages.ja]
         languageName = "日本語 (Japanese)"
         languageCode = "ja"
         contentDir = "content/ja"
-        time_format_blog = "2006-01-02"
+
 
 ################################################################################
 ### Permalinks configurations
